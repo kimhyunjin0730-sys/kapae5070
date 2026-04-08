@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS notice_board (
 CREATE TABLE IF NOT EXISTS workgraphy_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    phone VARCHAR(50),
+    phongit rm e VARCHAR(50),
     email VARCHAR(100),
     age_group VARCHAR(20),
     status VARCHAR(50),
