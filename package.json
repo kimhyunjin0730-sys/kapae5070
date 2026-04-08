@@ -1,0 +1,35 @@
+{
+  "name": "kapae5070",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimhyunjin0730-sys/KAPAE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kimhyunjin0730-sys/KAPAE/issues"
+  },
+  "homepage": "https://github.com/kimhyunjin0730-sys/KAPAE#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.3.0",
+    "@supabase/supabase-js": "^2.101.1",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.20.0",
+    "nodemailer": "^8.0.4",
+    "pdf-parse": "^1.1.1",
+    "resend": "^6.10.0"
+  }
+}

@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국중장년고용협회 | KAPAE 5070</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+:root {
+  --navy:       #0D1B2A;
+  --navy-mid:   #1A2E45;
+  --navy-light: #243B55;
+  --gold:       #B8976A;
+  --gold2:      #D4B896;
+  --gold-pale:  #F0E6D3;
+  --gold-lt:    rgba(184,151,106,.12);
+  --teal:       #0B6E5A;
+  --purple:     #7C3AED;
+  --purple-lt:  #A78BFA;
+  --purple-pale:rgba(124,58,237,.12);
+  --cream:      #F8F4EE;
+  --warm-white: #FDFAF6;
+  --ink:        #1A1A1A;
+  --ink2:       #3A3A3A;
+  --ink3:       #6A6A6A;
+  --mist:       rgba(184,151,106,.18);
+  --border:     rgba(184,151,106,.22);
+  --sh-sm:  0 2px 12px rgba(13,27,42,.08);
+  --sh-md:  0 8px 36px rgba(13,27,42,.16);
+  --sh-lg:  0 20px 60px rgba(13,27,42,.24);
+  --sh-gold: 0 8px 28px rgba(184,151,106,.22);
+  --r:    4px;
+  --r-lg: 8px;
+  --ease-out: cubic-bezier(.22,1,.36,1);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:15px;}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--warm-white);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.75;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+ul{list-style:none;}
+button,input,select,textarea{font-family:inherit;}
+
+/* ── TOPBAR ── */
+.topbar{background:rgba(8,15,24,.98);height:36px;display:flex;align-items:center;border-bottom:1px solid rgba(184,151,106,.1);}
+.topbar-in{max-width:1280px;margin:0 auto;width:100%;padding:0 60px;display:flex;align-items:center;justify-content:space-between;}
+.topbar-l{font-family:'Cormorant Garamond',serif;font-size:11px;color:rgba(255,255,255,.28);letter-spacing:.18em;text-transform:uppercase;}
+.topbar-r{display:flex;}
+.topbar-r a{font-size:11px;color:rgba(255,255,255,.32);padding:0 16px;height:36px;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.05);transition:color .18s;letter-spacing:.04em;}
+.topbar-r a:first-child{border-left:1px solid rgba(255,255,255,.05);}
+.topbar-r a:hover{color:var(--gold);}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:900;background:rgba(13,27,42,.98);backdrop-filter:blur(16px);transition:.3s;}
+.nav-top{padding:0 60px;display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1280px;margin:0 auto;}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-emblem{width:40px;height:40px;border:1px solid rgba(184,151,106,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .35s var(--ease-spring);}
+.nav-logo:hover .nav-logo-emblem{transform:rotate(-8deg) scale(1.05);}
+.nav-logo-emblem svg{width:20px;height:20px;}
+.nav-logo-text{display:flex;flex-direction:column;gap:2px;}
+.nav-logo-ko{font-family:'Noto Serif KR',serif;font-size:13.5px;font-weight:600;color:var(--gold2);letter-spacing:.03em;}
+.nav-logo-en{font-family:'Cormorant Garamond',serif;font-size:10.5px;font-weight:400;color:rgba(255,255,255,.32);letter-spacing:.14em;text-transform:uppercase;}
+.nav-utils{display:flex;align-items:center;gap:12px;}
+.nav-util-btn{font-size:11.5px;color:rgba(255,255,255,.45);letter-spacing:.05em;padding:7px 16px;border:1px solid rgba(255,255,255,.1);transition:.2s;cursor:pointer;background:none;}
+.nav-util-btn:hover{color:var(--gold2);border-color:var(--border);}
+.nav-util-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600;}
+.nav-util-btn.primary:hover{background:var(--gold2);border-color:var(--gold2);color:var(--navy);}
+.nav-util-btn.purple{background:var(--purple);border-color:var(--purple);color:white;font-weight:600;}
+.nav-util-btn.purple:hover{background:#6d28d9;border-color:#6d28d9;}
+.nav-bar{background:rgba(8,15,24,.9);border-top:1px solid rgba(184,151,106,.08);}
+.nav-bar-inner{padding:0 60px;display:flex;align-items:stretch;list-style:none;height:44px;max-width:1280px;margin:0 auto;}
+.nav-bar-inner > li{position:relative;}
+.nav-bar-inner > li > a{display:flex;align-items:center;padding:0 20px;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.68);letter-spacing:.04em;height:100%;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s;}
+.nav-bar-inner > li > a:hover,.nav-bar-inner > li:hover > a{color:var(--gold2);border-bottom-color:var(--gold);background:rgba(184,151,106,.04);}
+.nav-dropdown{position:absolute;top:100%;left:0;min-width:196px;background:var(--navy);border:1px solid rgba(184,151,106,.14);border-top:2px solid var(--gold);list-style:none;opacity:0;pointer-events:none;transform:translateY(8px);transition:.2s var(--ease-out);z-index:200;box-shadow:0 16px 48px rgba(0,0,0,.4);}
+.nav-bar-inner > li:hover .nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown li a{display:block;padding:11px 20px;font-size:12.5px;font-weight:300;color:rgba(255,255,255,.62);letter-spacing:.02em;border-left:2px solid transparent;transition:.18s;border-bottom:1px solid rgba(255,255,255,.04);}
+.nav-dropdown li a:hover{color:var(--gold2);border-left-color:var(--gold);background:rgba(184,151,106,.06);padding-left:24px;}
+.nav-dropdown .pn-link{color:#c4b5fd !important;}
+.nav-dropdown .pn-link:hover{color:#e9d5ff !important;border-left-color:#a78bfa !important;}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.ham span{display:block;width:22px;height:1.5px;background:var(--gold2);border-radius:2px;transition:.28s;}
+
+/* ── DRAWER ── */
+.drw{display:none;position:fixed;inset:0;z-index:1900;}
+.drw.on{display:block;}
+.drw-mask{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);}
+.drw-panel{position:absolute;right:0;top:0;bottom:0;width:300px;background:var(--navy);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .32s var(--ease-out);}
+.drw.on .drw-panel{transform:none;}
+.drw-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid rgba(255,255,255,.06);}
+.drw-head span{color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.12em;}
+.drw-close{background:none;border:none;color:rgba(255,255,255,.35);font-size:20px;cursor:pointer;}
+.drw a{display:flex;align-items:center;gap:12px;padding:15px 22px;color:rgba(255,255,255,.5);font-size:13.5px;font-weight:400;border-bottom:1px solid rgba(255,255,255,.04);transition:.15s;}
+.drw a:hover{background:rgba(255,255,255,.04);color:var(--gold2);padding-left:28px;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(184,151,106,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(184,151,106,.03) 1px,transparent 1px);background-size:80px 80px;}
+.hero-bg-circle{position:absolute;width:700px;height:700px;right:-150px;top:50%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(184,151,106,.05) 0%,transparent 70%);border:1px solid rgba(184,151,106,.07);}
+.hero-bg-circle2{position:absolute;width:420px;height:420px;right:60px;top:50%;transform:translateY(-50%);border-radius:50%;border:1px solid rgba(184,151,106,.04);}
+.hero-glow{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(184,151,106,.06) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:2;padding:160px 60px 80px;max-width:720px;}
+.hero-badge{display:inline-flex;align-items:center;gap:12px;margin-bottom:40px;}
+.hero-badge-line{width:40px;height:1px;background:var(--gold);}
+.hero-badge-text{font-family:'Cormorant Garamond',serif;font-size:12.5px;font-weight:400;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;}
+.hero-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2.4s ease-in-out infinite;margin-right:2px;}
+.badge-short{display:none;}
+.badge-full{display:inline;}
+.hero-title{font-family:'Noto Serif KR',serif;font-size:clamp(2.4rem,4.5vw,3.4rem);font-weight:300;color:white;line-height:1.28;letter-spacing:-.02em;margin-bottom:14px;}
+.hero-title strong{font-weight:600;display:block;color:var(--gold2);}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:rgba(255,255,255,.42);letter-spacing:.08em;margin-bottom:40px;font-style:italic;}
+.hero-desc{font-size:14.5px;font-weight:300;color:rgba(255,255,255,.58);line-height:2;max-width:520px;margin-bottom:52px;border-left:2px solid var(--gold);padding-left:22px;}
+.hero-actions{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:var(--navy);padding:14px 32px;font-size:12.5px;font-weight:700;letter-spacing:.06em;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:.3s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-secondary{color:rgba(255,255,255,.62);font-size:12.5px;letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;gap:10px;transition:color .3s;}
+.btn-secondary:hover{color:var(--gold2);}
+.btn-secondary-arrow{width:28px;height:1px;background:currentColor;transition:width .3s;}
+.btn-secondary:hover .btn-secondary-arrow{width:42px;}
+.hero-stats{position:absolute;bottom:64px;right:80px;display:flex;gap:52px;}
+.stat-item{text-align:right;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;color:var(--gold);display:block;line-height:1;margin-bottom:6px;}
+.stat-label{font-size:10.5px;font-weight:400;color:rgba(255,255,255,.38);letter-spacing:.06em;}
+
+/* ── SECTIONS COMMON ── */
+section{position:relative;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 60px;}
+.sec{padding:100px 0;}
+.section-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.section-eyebrow-line{width:30px;height:1px;background:var(--gold);flex-shrink:0;}
+.section-eyebrow-text{font-family:'Cormorant Garamond',serif;font-size:11.5px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;}
+.section-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;color:var(--navy);line-height:1.32;letter-spacing:-.01em;}
+.section-title.light{color:white;}
+.section-title em{font-style:italic;color:var(--gold);}
+
+/* ── ABOUT ── */
+.about{padding:120px 60px;background:var(--warm-white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;max-width:1280px;margin:0 auto;}
+.about-visual{position:relative;}
+.about-frame-accent{position:absolute;top:-20px;left:-20px;width:80px;height:80px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);z-index:2;}
+.about-frame-accent2{position:absolute;bottom:-20px;right:-20px;width:80px;height:80px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);z-index:2;}
+.about-img-frame{position:relative;background:var(--navy);aspect-ratio:4/5;overflow:hidden;}
+.about-img-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px;}
+.about-year-badge{font-family:'Bebas Neue',sans-serif;font-size:72px;font-weight:300;color:rgba(184,151,106,.1);line-height:1;position:absolute;bottom:24px;right:28px;}
+.about-emblem{width:80px;height:80px;border:1px solid rgba(184,151,106,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.about-emblem svg{width:40px;height:40px;}
+.about-frame-text{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:white;text-align:center;line-height:1.5;}
+.about-frame-sub{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold);letter-spacing:.16em;text-align:center;}
+.about-mission{margin-top:40px;padding:28px 32px;background:var(--navy);position:relative;overflow:hidden;}
+.about-mission::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);}
+.about-mission-text{font-family:'Noto Serif KR',serif;font-size:15.5px;font-weight:400;color:var(--cream);line-height:1.75;letter-spacing:.01em;}
+.about-mission-sub{margin-top:10px;font-size:12px;color:var(--gold);letter-spacing:.12em;font-family:'Cormorant Garamond',serif;}
+
+/* ── BUSINESS ── */
+.business{padding:120px 60px;background:var(--navy);position:relative;overflow:hidden;}
+.business-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(184,151,106,.04) 0%,transparent 70%);}
+.business-bg-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(184,151,106,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(184,151,106,.02) 1px,transparent 1px);background-size:80px 80px;}
+.business-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;background:rgba(184,151,106,.08);}
+.business-item{background:var(--navy);padding:44px 36px;position:relative;transition:background .35s;cursor:default;overflow:hidden;}
+.business-item::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;}
+.business-item:hover{background:var(--navy-mid);}
+.business-item:hover::after{transform:scaleX(1);}
+.business-num{font-family:'Bebas Neue',sans-serif;font-size:42px;font-weight:400;color:rgba(184,151,106,.1);position:absolute;top:22px;right:26px;line-height:1;}
+.business-icon{width:44px;height:44px;border:1px solid rgba(184,151,106,.28);display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.business-icon svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:1.5;}
+.business-title-ko{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:500;color:white;margin-bottom:12px;letter-spacing:-.01em;}
+.business-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.46);line-height:1.85;}
+
+/* ── VISION ── */
+.vision{padding:120px 60px;background:var(--cream);position:relative;}
+.vision-inner{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto;}
+.vision-left{position:sticky;top:120px;}
+.vision-cards{display:flex;flex-direction:column;gap:22px;}
+.vision-card{background:white;border:1px solid rgba(0,0,0,.06);padding:36px 32px;position:relative;transition:transform .3s,box-shadow .3s;}
+.vision-card:hover{transform:translateX(6px);box-shadow:-4px 0 0 var(--gold),0 8px 40px rgba(0,0,0,.08);}
+.vision-card-label{font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;}
+.vision-card-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:500;color:var(--navy);margin-bottom:12px;line-height:1.4;}
+.vision-card-text{font-size:13.5px;font-weight:300;color:var(--ink2);line-height:1.9;}
+
+/* ── PURPLENET LINK BANNER ── */
+.pn-banner{background:var(--navy);border-top:1px solid rgba(124,58,237,.18);border-bottom:1px solid rgba(184,151,106,.1);}
+.pn-banner-inner{max-width:1280px;margin:0 auto;padding:64px 60px;display:flex;align-items:center;justify-content:space-between;gap:60px;}
+.pn-banner-badge{display:inline-block;padding:5px 14px;border:1px solid rgba(124,58,237,.35);font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--purple-lt);letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px;}
+.pn-banner-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:400;color:white;line-height:1.45;margin-bottom:16px;}
+.pn-banner-pn{color:var(--purple-lt);}
+.pn-banner-desc{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.95;margin-bottom:22px;}
+.pn-banner-desc strong{color:var(--purple-lt);font-weight:500;}
+.pn-banner-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.pn-btag{font-size:11px;padding:4px 12px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.22);color:rgba(167,139,250,.8);letter-spacing:.03em;}
+.pn-banner-right{flex-shrink:0;}
+.pn-banner-cta{display:flex;align-items:center;gap:18px;padding:24px 32px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);text-decoration:none;transition:.28s;min-width:220px;}
+.pn-banner-cta:hover{background:rgba(124,58,237,.2);border-color:var(--purple-lt);transform:translateY(-2px);}
+.pn-banner-cta-icon{font-size:28px;flex-shrink:0;}
+.pn-banner-cta-text{display:flex;flex-direction:column;gap:3px;flex:1;}
+.pn-banner-cta-label{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;color:white;}
+.pn-banner-cta-url{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--purple-lt);letter-spacing:.1em;}
+.pn-banner-arrow{font-size:18px;color:var(--purple-lt);transition:transform .25s;}
+.pn-banner-cta:hover .pn-banner-arrow{transform:translateX(4px);}
+
+/* ── 히스토리 ── */
+.history{padding:120px 60px;background:var(--warm-white);}
+.history-timeline{position:relative;max-width:860px;margin:64px auto 0;padding-left:160px;}
+.history-line{position:absolute;left:120px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(184,151,106,.08));}
+.history-item{position:relative;padding-bottom:50px;}
+.history-year{position:absolute;left:-160px;top:0;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--gold);width:80px;text-align:right;}
+.history-dot{position:absolute;left:-46px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:3px solid var(--warm-white);box-shadow:0 0 0 1px var(--gold);}
+.history-content-title{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:500;color:var(--navy);margin-bottom:7px;}
+.history-content-text{font-size:13.5px;font-weight:300;color:var(--ink2);line-height:1.85;}
+
+/* ── NOTICE BOARD ── */
+.notice{padding:100px 60px;background:var(--cream);}
+.notice-wrap{max-width:1280px;margin:0 auto;}
+.notice-inner{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+.nboard{background:white;border:1px solid rgba(0,0,0,.07);overflow:hidden;box-shadow:var(--sh-sm);}
+.nboard-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:var(--navy);border-bottom:1px solid rgba(184,151,106,.12);}
+.nboard-title{display:flex;align-items:center;gap:10px;font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:500;color:white;letter-spacing:.02em;}
+.nboard-title-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);}
+.nboard-more{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--gold);letter-spacing:.14em;display:flex;align-items:center;gap:6px;transition:.18s;cursor:pointer;background:none;border:none;}
+.nboard-more:hover{opacity:.7;}
+.nboard-list{min-height:240px;}
+.nrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid rgba(0,0,0,.04);cursor:pointer;transition:background .14s;position:relative;}
+.nrow::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);transition:width .2s var(--ease-out);}
+.nrow:hover{background:var(--cream);}
+.nrow:hover::before{width:3px;}
+.nrow:last-child{border-bottom:none;}
+.nbadge{font-size:9px;font-weight:700;padding:2px 8px;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;}
+.nbadge.new-b{background:var(--navy);color:var(--gold);}
+.nbadge.hot-b{background:var(--gold);color:var(--navy);}
+.nbadge.emp-b{opacity:0;width:32px;}
+.nrow-title{font-size:13px;font-weight:400;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .14s;}
+.nrow:hover .nrow-title{color:var(--navy);}
+.nrow-date{font-size:11px;color:var(--ink3);flex-shrink:0;font-family:'Cormorant Garamond',serif;letter-spacing:.04em;}
+.nskel{height:50px;padding:0 28px;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:14px;}
+.nskel-bar{border-radius:3px;background:#eee;animation:shimmer 1.6s ease-in-out infinite;}
+@keyframes shimmer{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── NOTICE MODAL ── */
+.nmodal{position:fixed;inset:0;z-index:2000;display:none;align-items:stretch;justify-content:flex-end;}
+.nmodal.on{display:flex;}
+.nmodal-mask{position:absolute;inset:0;background:rgba(13,27,42,.6);backdrop-filter:blur(6px);animation:maskIn .3s ease both;}
+@keyframes maskIn{from{opacity:0}to{opacity:1}}
+.nmodal-panel{position:relative;z-index:1;width:min(660px,100vw);background:white;display:flex;flex-direction:column;box-shadow:var(--sh-lg);animation:slideIn .35s var(--ease-out) both;overflow:hidden;}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:none}}
+.nmodal-hdr{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.nmodal-bc{display:flex;align-items:center;gap:7px;font-family:'Cormorant Garamond',serif;font-size:12px;color:rgba(255,255,255,.38);letter-spacing:.06em;}
+.nmodal-bc-home{cursor:pointer;transition:color .15s;}
+.nmodal-bc-home:hover{color:var(--gold);}
+.nmodal-bc-sep{color:rgba(255,255,255,.18);}
+.nmodal-cat-lbl{color:var(--gold);font-weight:600;}
+.nmodal-close{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.18s;flex-shrink:0;}
+.nmodal-close:hover{background:rgba(255,255,255,.18);color:white;transform:rotate(90deg);}
+.nmodal-body{flex:1;overflow-y:auto;padding:32px 36px 40px;}
+.nmodal-body::-webkit-scrollbar{width:4px;}
+.nmodal-body::-webkit-scrollbar-thumb{background:var(--gold-pale);border-radius:4px;}
+.nmodal-meta-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.nmodal-badge{font-size:9px;font-weight:700;padding:3px 9px;letter-spacing:.5px;text-transform:uppercase;}
+.nmodal-badge.new-b{background:var(--navy);color:var(--gold);}
+.nmodal-badge.hot-b{background:var(--gold);color:var(--navy);}
+.nmodal-date{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--ink3);letter-spacing:.04em;}
+.nmodal-views{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--ink3);letter-spacing:.04em;}
+.nmodal-views::before{content:'· ';margin-left:2px;}
+.nmodal-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:600;color:var(--navy);line-height:1.5;letter-spacing:-.3px;margin-bottom:6px;}
+.nmodal-author{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink3);letter-spacing:.04em;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid rgba(0,0,0,.07);display:flex;align-items:center;gap:7px;}
+.nmodal-content{font-size:14px;line-height:2;color:var(--ink2);}
+.nmodal-content p{margin-bottom:14px;}
+.nmodal-content strong{color:var(--navy);font-weight:700;}
+.nmodal-content a{color:var(--gold);text-decoration:underline;}
+.nmodal-content .nc-section{margin:20px 0;padding:18px 20px;background:var(--cream);border-left:3px solid var(--gold);}
+.nmodal-content .nc-section h4{font-weight:700;color:var(--navy);margin-bottom:10px;font-size:14px;}
+.nmodal-content .nc-section ul{padding-left:16px;list-style:disc;}
+.nmodal-content .nc-section li{margin-bottom:6px;}
+.nmodal-content .nc-note{font-size:12px;color:var(--ink3);margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,0,0,.07);}
+.nmodal-footer{flex-shrink:0;padding:16px 28px;border-top:1px solid rgba(0,0,0,.07);background:var(--cream);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.nmodal-nav-btn{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--ink2);background:none;border:1px solid rgba(0,0,0,.1);padding:7px 16px;cursor:pointer;transition:.16s;font-family:'Noto Sans KR',sans-serif;letter-spacing:.02em;}
+.nmodal-nav-btn:hover{border-color:var(--gold);color:var(--navy);}
+.nmodal-nav-btn:disabled{opacity:.35;cursor:not-allowed;}
+
+/* ── INQUIRY ── */
+.inquiry{padding:100px 60px;background:var(--navy);display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.inquiry-info-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:400;color:white;margin-bottom:10px;line-height:1.4;}
+.inquiry-info-title em{font-style:italic;color:var(--gold);}
+.inquiry-info-sub{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,.36);letter-spacing:.1em;margin-bottom:44px;font-style:italic;}
+.ci{display:flex;align-items:flex-start;gap:16px;margin-bottom:26px;}
+.ci-icon{width:36px;height:36px;border:1px solid rgba(184,151,106,.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.ci-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;}
+.ci-label{font-size:10px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;}
+.ci-value{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.72);line-height:1.65;}
+.ci-value a{color:var(--gold2);}
+.form-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(184,151,106,.15);padding:36px;}
+.fr{margin-bottom:16px;}
+.fr label{display:block;font-size:10px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;}
+.fr input,.fr select,.fr textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.18);color:rgba(255,255,255,.8);font-size:13px;font-weight:300;outline:none;transition:border .2s;resize:vertical;font-family:'Noto Sans KR',sans-serif;}
+.fr input::placeholder,.fr textarea::placeholder{color:rgba(255,255,255,.18);}
+.fr input:focus,.fr select:focus,.fr textarea:focus{border-color:var(--gold);}
+.fr textarea{height:100px;}
+.fr select option{background:var(--navy);color:white;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fr-check{display:flex;align-items:flex-start;gap:9px;margin-bottom:18px;}
+.fr-check input{width:16px;height:16px;flex-shrink:0;margin-top:3px;accent-color:var(--gold);cursor:pointer;}
+.fr-check label{font-size:12px;color:rgba(255,255,255,.38);letter-spacing:0;text-transform:none;font-weight:300;cursor:pointer;}
+.form-submit{width:100%;padding:14px 32px;background:var(--gold);color:var(--navy);border:none;font-size:13px;font-weight:700;font-family:'Noto Sans KR',sans-serif;letter-spacing:.06em;cursor:pointer;transition:.24s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);}
+.form-submit:hover{background:var(--gold2);transform:translateY(-2px);}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.fmsg{margin-top:12px;padding:11px 16px;font-size:12.5px;display:none;}
+.fmsg.ok{background:rgba(11,110,90,.15);color:#4ade80;display:block;border:1px solid rgba(74,222,128,.2);}
+.fmsg.er{background:rgba(220,38,38,.12);color:#f87171;display:block;border:1px solid rgba(248,113,113,.2);}
+
+/* ── FOOTER ── */
+footer{background:#060D14;padding:52px 60px;border-top:1px solid rgba(184,151,106,.15);}
+.footer-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:22px;}
+.ft-logo-row{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
+.ft-emblem{width:40px;height:40px;border:1px solid rgba(184,151,106,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.ft-emblem svg{width:20px;height:20px;}
+/* ★ 가독성 개선: 텍스트 명도 전반 상향 */
+.ft-nm{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.82);}
+.ft-en{font-size:9px;color:rgba(255,255,255,.32);margin-top:2px;letter-spacing:.3px;}
+.ft-brand p{font-size:12.5px;color:rgba(255,255,255,.5);line-height:2;font-weight:300;}
+.ft-biz{margin-top:10px;font-size:10.5px;color:rgba(255,255,255,.28);font-weight:300;}
+.fc h5{font-size:9.5px;font-weight:700;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.fc li{margin-bottom:10px;}
+.fc a{font-size:12.5px;color:rgba(255,255,255,.52);transition:.15s;font-weight:300;}
+.fc a:hover{color:var(--gold2);}
+.footer-bot{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.footer-bot p{font-size:11.5px;color:rgba(255,255,255,.36);}
+.footer-links{display:flex;gap:18px;}
+.footer-links a{font-size:11.5px;color:rgba(255,255,255,.4);transition:.15s;}
+.footer-links a:hover{color:rgba(255,255,255,.75);}
+
+/* ── CHATBOT ── */
+.cfab{position:fixed;bottom:28px;right:28px;z-index:3000;width:54px;height:54px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);cursor:pointer;box-shadow:0 6px 24px rgba(13,27,42,.4);display:flex;align-items:center;justify-content:center;font-size:20px;transition:.24s var(--ease-spring);outline:none;}
+.cfab:hover{transform:scale(1.08);box-shadow:0 10px 32px rgba(13,27,42,.5);}
+.cfab .rng{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--gold);opacity:.2;animation:rng 3.5s ease-in-out infinite;}
+.cwin{position:fixed;bottom:94px;right:28px;z-index:3000;width:348px;max-width:calc(100vw - 28px);background:var(--warm-white);box-shadow:var(--sh-lg);border:1px solid var(--border);display:none;flex-direction:column;overflow:hidden;}
+.cwin.on{display:flex;animation:cpop .28s var(--ease-spring);}
+.cwh{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);padding:14px 18px;display:flex;align-items:center;gap:12px;}
+.cwav{width:36px;height:36px;border-radius:50%;border:1px solid rgba(184,151,106,.35);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.cwn{font-family:'Noto Serif KR',serif;font-weight:600;color:white;font-size:13.5px;}
+.cwst{font-size:10px;color:rgba(255,255,255,.42);margin-top:2px;display:flex;align-items:center;gap:5px;}
+.cwst::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.cwx{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.35);font-size:18px;cursor:pointer;}
+.cwmsgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:280px;min-height:160px;background:var(--cream);}
+.cm{display:flex;gap:8px;}
+.cm.u{flex-direction:row-reverse;}
+.cb{padding:9px 13px;font-size:12.5px;line-height:1.65;max-width:82%;}
+.cm.bot .cb{background:white;border:1px solid rgba(184,151,106,.2);color:var(--ink);}
+.cm.u .cb{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:white;}
+.cav{width:26px;height:26px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.cwqs{padding:6px 12px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid var(--border);background:white;}
+.cqb{font-size:11px;font-weight:400;padding:4px 10px;border:1px solid var(--border);background:white;cursor:pointer;color:var(--gold);transition:.15s;letter-spacing:.03em;}
+.cqb:hover{background:var(--navy);color:var(--gold2);border-color:var(--navy);}
+.cwi-row{display:flex;border-top:1px solid var(--border);background:white;}
+.cwi{flex:1;padding:11px 14px;border:none;outline:none;font-size:13px;color:var(--ink);background:transparent;}
+.cwsnd{width:44px;background:var(--gold);border:none;color:var(--navy);cursor:pointer;font-size:14px;transition:.15s;}
+.cwsnd:hover{background:var(--gold2);}
+.ty{display:flex;gap:4px;align-items:center;padding:6px;}
+.ty span{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:tb 1.2s infinite;}
+.ty span:nth-child(2){animation-delay:.2s;}
+.ty span:nth-child(3){animation-delay:.4s;}
+
+
+/* ── ANIMATIONS ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);}
+.rv.vis{opacity:1;transform:none;}
+.rv.d1{transition-delay:.08s;}.rv.d2{transition-delay:.16s;}.rv.d3{transition-delay:.24s;}.rv.d4{transition-delay:.32s;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.6)}}
+@keyframes rng{0%,100%{transform:scale(1);opacity:.2}50%{transform:scale(1.1);opacity:.06}}
+@keyframes cpop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1080px){
+  .nav-bar-inner,.nav-utils{display:none;}
+  .ham{display:flex;}
+  .about-grid{grid-template-columns:1fr;gap:48px;}
+  .business-grid{grid-template-columns:repeat(2,1fr);}
+  .vision-inner{grid-template-columns:1fr;}
+  .vision-left{position:static;}
+  .pn-banner-inner{flex-direction:column;gap:36px;}
+  .inquiry{grid-template-columns:1fr;}
+  .footer-in{grid-template-columns:1fr 1fr;gap:28px;}
+  .notice-inner{grid-template-columns:1fr;}
+  .hero-stats{position:static;padding:32px 60px 56px;justify-content:flex-start;gap:36px;}
+}
+
+/* ── 모바일 (768px 이하) ── */
+@media(max-width:768px){
+  .topbar{display:none;}
+
+  /* ─ 히어로 ─ */
+  .hero{min-height:auto;}
+  .hero-content{padding:100px 24px 0;max-width:100%;}
+  .hero-badge{margin-bottom:22px;gap:8px;}
+  .hero-badge-line{width:24px;}
+  .hero-badge-text{font-size:9.5px;letter-spacing:.12em;}
+  .hero-title{font-size:clamp(1.65rem,7.5vw,2.4rem);line-height:1.32;letter-spacing:-.01em;margin-bottom:10px;word-break:keep-all;}
+  .hero-subtitle{font-size:14px;margin-bottom:22px;letter-spacing:.04em;}
+  .hero-desc{font-size:13px;line-height:1.85;margin-bottom:32px;padding-left:16px;}
+  .hero-actions{gap:14px;flex-direction:column;align-items:flex-start;}
+  .btn-primary{padding:13px 26px;font-size:12px;}
+  .badge-full{display:none;}
+  .badge-short{display:inline;}
+  .hero-stats{position:static;padding:28px 24px 48px;justify-content:flex-start;gap:28px;flex-wrap:wrap;}
+  .stat-num{font-size:26px;}
+  .stat-label{font-size:10px;}
+
+  /* ─ 섹션 패딩 ─ */
+  .about,.business,.vision,.history,.notice,.inquiry{padding:60px 24px;}
+  .pn-banner{padding:0 24px;}
+  .pn-banner-inner{padding:44px 0;gap:28px;}
+  .pn-banner-cta{min-width:auto;width:100%;}
+  .business > div[style]{padding:0 24px !important;}
+  .history > div[style]{padding:0 24px !important;}
+  .section-title{font-size:1.5rem;}
+  .vision-card{padding:26px 22px;}
+
+  /* ─ 풋터: 2열 압축 레이아웃 ─ */
+  footer{padding:36px 20px 28px;}
+  .footer-in{
+    grid-template-columns:1fr 1fr;
+    gap:20px 28px;
+    padding-bottom:24px;
+  }
+  /* 브랜드 블록 전체 폭 */
+  .footer-in > .ft-brand{grid-column:1 / -1;}
+  .ft-en{display:none;}
+  .ft-brand p{font-size:12px;line-height:1.85;}
+  .footer-bot{flex-direction:column;gap:10px;align-items:flex-start;}
+  .footer-bot p{font-size:11px;}
+  .footer-links{gap:14px;}
+
+  /* ─ 알림 모달 ─ */
+  .nmodal-panel{width:100vw;}
+  .nmodal-body{padding:24px 20px 32px;}
+}
+
+/* ── 소형 (480px 이하) ── */
+@media(max-width:480px){
+  .hero-title{font-size:clamp(1.5rem,7vw,1.9rem);}
+  .hero-content{padding-top:90px;}
+  .business-grid{grid-template-columns:1fr;}
+  .f2,.afr2{grid-template-columns:1fr;}
+  .nav-logo-en{display:none;}
+  .nav-logo-ko{font-size:12px;}
+  .history-timeline{padding-left:80px;}
+  .history-year{left:-80px;font-size:18px;width:52px;}
+  .history-dot{left:-26px;}
+  .history-line{left:54px;}
+  /* 소형에서도 2열 유지, 너무 좁으면 1열로 */
+  .footer-in{grid-template-columns:1fr;}
+  .footer-in > .ft-brand{grid-column:1;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="topbar-l">Korea Association of Prime Aged Employment · KAPAE · Est. 2015</span>
+    <div class="topbar-r">
+      <a href="http://kapae5070.or.kr" target="_blank">공식 홈페이지</a>
+      <a href="https://purplnetlanding.vercel.app/" target="_blank">🟣 퍼플넷</a>
+      <a href="https://www.youtube.com/channel/UClZsiie0UHyhBgsmyaoA_0w" target="_blank">유튜브</a>
+      <a href="#notice">알림마당</a>
+      <a href="javascript:void(0)" onclick="toggleChat()">AI 상담</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top">
+    <a class="nav-logo" href="#home">
+      <div class="nav-logo-emblem">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#B8976A" stroke-width="1"/><circle cx="12" cy="12" r="5" stroke="#B8976A" stroke-width=".75"/><line x1="12" y1="3" x2="12" y2="21" stroke="#B8976A" stroke-width=".75"/><line x1="3" y1="12" x2="21" y2="12" stroke="#B8976A" stroke-width=".75"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-ko">(사)한국중장년고용협회</span>
+        <span class="nav-logo-en">Korea Association of Prime Aged Employment · KAPAE 5070</span>
+      </div>
+    </a>
+    <div class="nav-utils">
+      <a href="https://purplnetlanding.vercel.app/" target="_blank" class="nav-util-btn purple">🟣 퍼플넷</a>
+      <a href="http://kapae5070.or.kr" target="_blank" class="nav-util-btn">공식 홈페이지</a>
+      <button class="nav-util-btn primary" onclick="document.getElementById('inquiry').scrollIntoView({behavior:'smooth'})">문의하기</button>
+    </div>
+    <button class="ham" onclick="openDrw()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-bar">
+    <ul class="nav-bar-inner">
+      <li><a href="#about">협회소개 ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="#about">설립 목적 및 비전</a></li>
+          <li><a href="#about">조직 안내</a></li>
+          <li><a href="#history">연혁</a></li>
+        </ul>
+      </li>
+      <li><a href="#business">핵심사업 ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="#business">제도연구·정책개발</a></li>
+          <li><a href="#business">조사 및 통계</a></li>
+          <li><a href="#business">정부시책 홍보</a></li>
+          <li><a href="#business">인력매칭 지원</a></li>
+          <li><a href="#business">컨설팅 지원</a></li>
+          <li><a href="#business">교육훈련</a></li>
+          <li><a href="#business">인증 및 자격</a></li>
+        </ul>
+      </li>
+      <li><a href="https://purplnetlanding.vercel.app/" target="_blank">🟣 퍼플넷 ↗</a></li>
+      <li><a href="#notice">미디어 ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="https://www.youtube.com/channel/UClZsiie0UHyhBgsmyaoA_0w" target="_blank">유튜브 채널</a></li>
+          <li><a href="#notice">공지사항</a></li>
+          <li><a href="#notice">협회 소식</a></li>
+        </ul>
+      </li>
+      <li><a href="#notice">알림마당 ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="#notice">공지사항</a></li>
+          <li><a href="#notice">협회 소식</a></li>
+        </ul>
+      </li>
+      <li><a href="#inquiry">문의하기</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- DRAWER -->
+<div class="drw" id="drw">
+  <div class="drw-mask" onclick="closeDrw()"></div>
+  <div class="drw-panel">
+    <div class="drw-head"><span>KAPAE 5070</span><button class="drw-close" onclick="closeDrw()">✕</button></div>
+    <a href="#home" onclick="closeDrw()">🏠 홈</a>
+    <a href="#about" onclick="closeDrw()">🏛 협회 소개</a>
+    <a href="#business" onclick="closeDrw()">📋 핵심 사업</a>
+    <a href="#vision" onclick="closeDrw()">🎯 비전 &amp; 목표</a>
+    <a href="https://purplnetlanding.vercel.app/" target="_blank">🟣 퍼플넷 바로가기 ↗</a>
+    <a href="#history" onclick="closeDrw()">📅 연혁</a>
+    <a href="#notice" onclick="closeDrw()">📰 알림마당</a>
+    <a href="#inquiry" onclick="closeDrw()">💬 문의하기</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-line"></span>
+      <span class="hero-badge-text"><span class="hero-dot"></span><span class="badge-full"> Korea Association of Prime Aged Employment</span><span class="badge-short"> KAPAE 5070</span></span>
+    </div>
+    <h1 class="hero-title">
+      경험은 끝나지 않는다<strong>재배치될 뿐이다</strong>
+    </h1>
+    <p class="hero-subtitle">Retirement is not an end — it's a repositioning.</p>
+    <p class="hero-desc">
+      (사)한국중장년고용협회는 중장년 고용시스템을 구축하여 고령화 문제를 풀어가고,
+      국가 일자리 창출에 초석을 다지며 AI 기술과 암묵지를 융합한 새로운 고용 생태계를 만들어갑니다.
+    </p>
+    <div class="hero-actions">
+      <a href="#about" class="btn-primary">협회 알아보기</a>
+      <a href="#purplenet" class="btn-secondary">
+        <span class="btn-secondary-arrow"></span>
+        퍼플넷 연동 서비스
+      </a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">2015</span>
+      <span class="stat-label">설립 연도</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">7</span>
+      <span class="stat-label">핵심사업 분야</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">5+</span>
+      <span class="stat-label">연계 기관</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual rv">
+      <div class="about-frame-accent"></div>
+      <div class="about-frame-accent2"></div>
+      <div class="about-img-frame">
+        <div class="about-img-inner">
+          <div class="about-emblem">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#B8976A" stroke-width="1"/><circle cx="20" cy="20" r="8" stroke="#B8976A" stroke-width=".75"/><line x1="20" y1="6" x2="20" y2="34" stroke="#B8976A" stroke-width=".75"/><line x1="6" y1="20" x2="34" y2="20" stroke="#B8976A" stroke-width=".75"/></svg>
+          </div>
+          <div class="about-frame-text">중장년의 경험은<br>가장 강력한 자산입니다</div>
+          <div class="about-frame-sub">KAPAE · Est. 2015</div>
+          <div class="about-year-badge">2015</div>
+        </div>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text">About KAPAE</span></div>
+      <h2 class="section-title" style="margin-bottom:28px">협회<em> 소개</em></h2>
+      <h3 style="font-family:'Noto Serif KR',serif;font-size:1.5rem;font-weight:400;color:var(--navy);line-height:1.5;margin-bottom:24px;">중장년 고용시스템 구축으로<br>고령화 시대를 이끄는 선도 협회</h3>
+      <p style="font-size:14.5px;font-weight:300;color:var(--ink2);line-height:2;margin-bottom:18px;">한국중장년고용협회는 초고령사회 진입에 따라 중장년을 '부양의 대상'이 아닌 '경제 활동의 주체'로 인식하는 패러다임 전환을 위해 2015년 국내 최초로 설립된 중장년 고용 전문 법인입니다.</p>
+      <p style="font-size:14.5px;font-weight:300;color:var(--ink2);line-height:2;margin-bottom:0;">AI 기술과 중장년의 암묵지를 융합하여 새로운 비즈니스 모델을 창출하고, 지속가능한 취업·창업·고용 생태계를 구축하는 데 목적을 두고 있습니다.</p>
+      <div class="about-mission" style="margin-top:40px;">
+        <div class="about-mission-text">"퇴직은 끝이 아니라 재배치의 시작입니다.<br>중장년의 경험을 데이터로, 데이터를 일자리로."</div>
+        <div class="about-mission-sub">— KAPAE Mission Statement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section class="business" id="business">
+  <div class="business-bg"></div>
+  <div class="business-bg-lines"></div>
+  <div style="max-width:1280px;margin:0 auto;padding:0 60px;">
+    <div class="rv">
+      <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" style="color:var(--gold)">Core Business</span></div>
+      <h2 class="section-title light">핵심 <em>사업</em></h2>
+    </div>
+    <div class="business-grid">
+      <div class="business-item rv d1"><span class="business-num">01</span><div class="business-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="business-title-ko">제도 연구 및 정책 개발</div><div class="business-desc">중장년 고용 관련 제도연구 및 정책개발을 통한 사회구조 개선에 기여합니다.</div></div>
+      <div class="business-item rv d2"><span class="business-num">02</span><div class="business-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div><div class="business-title-ko">조사 및 통계</div><div class="business-desc">산업체, 유관단체를 대상으로 수요조사 및 통계를 수집·분석합니다.</div></div>
+      <div class="business-item rv d3"><span class="business-num">03</span><div class="business-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="business-title-ko">정부 시책 홍보</div><div class="business-desc">중장년 관련 정부 시책을 기업과 개인에게 효과적으로 홍보·전달합니다.</div></div>
+      <div class="business-item rv d1"><span class="business-num">04</span><div class="business-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="business-title-ko">인력 매칭 지원</div><div class="business-desc">전직지원 및 중견전문인력 매칭 지원으로 최적의 재취업을 연결합니다.</div></div>
+      <div class="business-item rv d2"><span class="business-num">05</span><div class="business-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><div class="business-title-ko">컨설팅 지원</div><div class="business-desc">중장년 친화 인사제도 개편을 위한 전문 컨설팅을 지원합니다.</div></div>
+      <div class="business-item rv d3"><span class="business-num">06</span><div class="business-icon"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div><div class="business-title-ko">교육 훈련</div><div class="business-desc">생애설계, 전문가 양성 프로그램 보급 및 재취업 지원 교육 훈련을 제공합니다.</div></div>
+      <div class="business-item rv d2" style="grid-column:2;"><span class="business-num">07</span><div class="business-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div class="business-title-ko">인증 및 자격</div><div class="business-desc">중장년 친화기업 인증 및 관련산업 전문 컨설턴트 양성 프로그램을 운영합니다.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="vision-inner">
+    <div class="vision-left rv">
+      <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text">Vision &amp; Mission</span></div>
+      <h2 class="section-title" style="margin-bottom:24px">비전과<br><em>목표</em></h2>
+      <p style="font-size:14px;font-weight:300;color:var(--ink2);line-height:1.95;">AI 시대를 선도하는 중장년 핵심인재 양성 및 고용 창출 플랫폼으로서, 경험의 상품화와 맞춤형 일자리 창출을 통해 사회적 가치를 실현합니다.</p>
+    </div>
+    <div class="vision-cards">
+      <div class="vision-card rv d1"><div class="vision-card-label">Vision 01</div><div class="vision-card-title">경험의 상품화</div><div class="vision-card-text">중장년의 암묵지를 AI 기반으로 분석·가공하여 수익 모델로 전환하는 '경험 상품화 One-Stop Service'를 제공합니다. 이력서에 담기지 않는 진짜 능력을 시장에 연결합니다.</div></div>
+      <div class="vision-card rv d2"><div class="vision-card-label">Vision 02</div><div class="vision-card-title">맞춤형 일자리 창출</div><div class="vision-card-text">기업의 수요와 중장년의 전문성을 AI로 매칭하여 새로운 형태의 일자리를 발굴하고 연계합니다. 풀타임 채용에서 프로젝트·자문·파트타임으로 일의 형태를 다양화합니다.</div></div>
+      <div class="vision-card rv d3"><div class="vision-card-label">Vision 03</div><div class="vision-card-title">사회적 가치 실현</div><div class="vision-card-text">중장년의 경제적 자립과 사회 참여를 통해 고령화 사회의 문제를 해결하고 세대 통합에 기여합니다. 중장년을 '부양의 대상'이 아닌 '경제 활동의 주체'로 재정의합니다.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PURPLENET LINK BANNER -->
+<section class="pn-banner" id="purplenet">
+  <div class="pn-banner-inner rv">
+    <div class="pn-banner-left">
+      <div class="pn-banner-badge">Connected Platform · 공식 연동</div>
+      <h2 class="pn-banner-title">
+        <span class="pn-banner-pn">🟣 퍼플넷</span>과 함께<br>
+        일경험을 다시 일로 연결합니다
+      </h2>
+      <p class="pn-banner-desc">
+        KAPAE는 경험 기반 플랫폼 <strong>퍼플넷(Purplenet)</strong>과 공식 연동합니다.<br>
+        워크그래피 생성·AI 매칭·진로코칭·교육·자격증까지, 퍼플넷 페이지에서 확인하세요.
+      </p>
+      <div class="pn-banner-tags">
+        <span class="pn-btag">워크그래피</span>
+        <span class="pn-btag">AI 매칭</span>
+        <span class="pn-btag">진로코칭</span>
+        <span class="pn-btag">교육훈련</span>
+        <span class="pn-btag">자격증</span>
+      </div>
+    </div>
+    <div class="pn-banner-right">
+      <a href="https://purplnetlanding.vercel.app/" target="_blank" class="pn-banner-cta">
+        <span class="pn-banner-cta-icon">🟣</span>
+        <span class="pn-banner-cta-text">
+          <span class="pn-banner-cta-label">퍼플넷 바로가기</span>
+          <span class="pn-banner-cta-url">purplenet.kr</span>
+        </span>
+        <span class="pn-banner-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history" id="history">
+  <div style="max-width:1280px;margin:0 auto;padding:0 60px;">
+    <div class="rv" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text">History</span><span class="section-eyebrow-line"></span></div>
+      <h2 class="section-title">협회 <em>연혁</em></h2>
+    </div>
+    <div class="history-timeline">
+      <div class="history-line"></div>
+      <div class="history-item rv"><div class="history-year">2015</div><div class="history-dot"></div><div class="history-content-title">협회 설립</div><div class="history-content-text">국내 최초 중장년 고용 전문 사단법인 설립<br>사업자번호 516-82-00011 등록</div></div>
+      <div class="history-item rv d1"><div class="history-year">2018</div><div class="history-dot"></div><div class="history-content-title">MOU 체결 및 사업 확장</div><div class="history-content-text">주식회사 메인에이지와 업무협약 체결<br>중장년 친화기업 인증 프로그램 본격 운영</div></div>
+      <div class="history-item rv d2"><div class="history-year">2023</div><div class="history-dot"></div><div class="history-content-title">암묵지 스튜디오 포털 기획</div><div class="history-content-text">온라인 통합 플랫폼 기획 및 AI 융합 전략 수립<br>퍼플넷 연계 조직 네트워크 구성</div></div>
+      <div class="history-item rv d3"><div class="history-year">2026</div><div class="history-dot" style="background:var(--purple-lt);box-shadow:0 0 0 4px rgba(124,58,237,.2);"></div><div class="history-content-title">퍼플넷 런칭 · 기반 구축기</div><div class="history-content-text">조직 안정화 및 퍼플넷 정식 런칭<br>워크그래피 DB 구축 및 AI 매칭·진로코칭 서비스 개시<br>교육프로세스·자격증 발급 연동 완료</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICE BOARD -->
+<section class="notice" id="notice">
+  <div class="notice-wrap">
+    <div class="rv" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text">Notice Board</span><span class="section-eyebrow-line"></span></div>
+      <h2 class="section-title">알림 <em>마당</em></h2>
+      <p style="font-size:14px;font-weight:300;color:var(--ink2);margin-top:14px;">최신 공지사항과 협회 소식을 확인하세요.</p>
+    </div>
+    <div class="notice-inner rv d1">
+      <div class="nboard">
+        <div class="nboard-hdr">
+          <span class="nboard-title"><span class="nboard-title-dot"></span>공지사항</span>
+          <button class="nboard-more" onclick="openBoardAll('notice')">더 보기 →</button>
+        </div>
+        <div class="nboard-list" id="list-notice">
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:200px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:160px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:220px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:180px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:210px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+        </div>
+      </div>
+      <div class="nboard">
+        <div class="nboard-hdr">
+          <span class="nboard-title"><span class="nboard-title-dot"></span>협회 소식</span>
+          <button class="nboard-more" onclick="openBoardAll('news')">더 보기 →</button>
+        </div>
+        <div class="nboard-list" id="list-news">
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:200px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:240px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:175px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:195px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+          <div class="nskel"><div class="nskel-bar" style="width:32px;height:10px"></div><div class="nskel-bar" style="width:215px;height:10px;flex:1"></div><div class="nskel-bar" style="width:52px;height:9px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICE DETAIL MODAL -->
+<div class="nmodal" id="nmodal" onclick="nmodalMaskClick(event)">
+  <div class="nmodal-mask"></div>
+  <div class="nmodal-panel" id="nmodalPanel">
+    <div class="nmodal-hdr">
+      <div class="nmodal-bc">
+        <span class="nmodal-bc-home" onclick="closeModal()">알림마당</span>
+        <span class="nmodal-bc-sep">›</span>
+        <span class="nmodal-cat-lbl" id="nmodalCat">공지사항</span>
+      </div>
+      <button class="nmodal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="nmodal-body" id="nmodalBody">
+      <div class="nmodal-meta-row">
+        <span class="nmodal-badge" id="nmodalBadge" style="display:none"></span>
+        <span class="nmodal-date" id="nmodalDate"></span>
+        <span class="nmodal-views" id="nmodalViews"></span>
+      </div>
+      <h2 class="nmodal-title" id="nmodalTitle"></h2>
+      <div class="nmodal-author" id="nmodalAuthor"></div>
+      <div class="nmodal-content" id="nmodalContent"></div>
+    </div>
+    <div class="nmodal-footer">
+      <button class="nmodal-nav-btn" id="nmodalPrev" onclick="modalNav(-1)">← 이전 글</button>
+      <button class="nmodal-nav-btn" onclick="closeModal()">목록으로</button>
+      <button class="nmodal-nav-btn" id="nmodalNext" onclick="modalNav(1)">다음 글 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- INQUIRY -->
+<section class="inquiry" id="inquiry">
+  <div class="rv">
+    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" style="color:var(--gold)">Contact Us</span></div>
+    <h2 class="inquiry-info-title">문의 <em>하기</em></h2>
+    <p class="inquiry-info-sub">We're here to help you</p>
+    <div class="ci">
+      <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+      <div><div class="ci-label">주소</div><div class="ci-value">서울 서초구 서초대로64길 55<br>준원빌딩 505호</div></div>
+    </div>
+    <div class="ci">
+      <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+      <div><div class="ci-label">전화</div><div class="ci-value"><a href="tel:02-582-1009">02-582-1009</a></div></div>
+    </div>
+    <div class="ci">
+      <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+      <div><div class="ci-label">이메일</div><div class="ci-value"><a href="mailto:kapae1503@gmail.com">kapae1503@gmail.com</a></div></div>
+    </div>
+    <div class="ci">
+      <div class="ci-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div><div class="ci-label">웹사이트</div><div class="ci-value">kapae.or.kr &nbsp;·&nbsp; <a href="https://purplnetlanding.vercel.app/" target="_blank" style="color:#c4b5fd;">purplenet.kr</a></div></div>
+    </div>
+  </div>
+  <div class="rv d2">
+    <div class="form-wrap">
+      <div class="f2">
+        <div class="fr"><label>성명 *</label><input type="text" id="fn" placeholder="홍길동"></div>
+        <div class="fr"><label>연락처 *</label><input type="tel" id="fp" placeholder="010-0000-0000"></div>
+      </div>
+      <div class="fr"><label>이메일</label><input type="email" id="fe" placeholder="example@email.com"></div>
+      <div class="fr">
+        <label>문의 유형</label>
+        <select id="ft">
+          <option value="">선택해주세요</option>
+          <option>퍼플넷 / 워크그래피</option>
+          <option>고용정보 수집 · 등록</option>
+          <option>AI 매칭 · 진로코칭</option>
+          <option>교육훈련 프로그램</option>
+          <option>자격증 · 친화기업 인증</option>
+          <option>재취업 · 인력매칭</option>
+          <option>기업 컨설팅</option>
+          <option>기타 문의</option>
+        </select>
+      </div>
+      <div class="fr"><label>문의 내용 *</label><textarea id="fm" placeholder="문의 내용을 입력해주세요."></textarea></div>
+      <div class="fr-check">
+        <input type="checkbox" id="fpriv">
+        <label for="fpriv">개인정보 수집 및 이용에 동의합니다. (성명, 연락처, 이메일을 문의 답변 목적으로 수집합니다.)</label>
+      </div>
+      <button class="form-submit" id="fsb" onclick="doSubmit()">
+        <span id="fsbTxt">상담 신청하기 →</span>
+        <span id="fsbSpin" style="display:none">⏳ 전송 중…</span>
+      </button>
+      <div class="fmsg" id="fmsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="ft-brand">
+      <div class="ft-logo-row">
+        <div class="ft-emblem">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#B8976A" stroke-width="1"/><circle cx="12" cy="12" r="5" stroke="#B8976A" stroke-width=".75"/><line x1="12" y1="3" x2="12" y2="21" stroke="#B8976A" stroke-width=".75"/><line x1="3" y1="12" x2="21" y2="12" stroke="#B8976A" stroke-width=".75"/></svg>
+        </div>
+        <div><div class="ft-nm">(사)한국중장년고용협회</div><div class="ft-en">Korea Association of Prime Aged Employment · KAPAE 5070</div></div>
+      </div>
+      <p>중장년 고용시스템을 구축하여 고령화 문제를 풀어가며<br>국가 일자리 창출에 초석을 다지는 비영리 사단법인입니다.</p>
+      <div class="ft-biz">사업자번호 516-82-00011 · 비영리단체 · 우편번호 06636</div>
+    </div>
+    <div class="fc"><h5>협회</h5><ul><li><a href="#about">협회 소개</a></li><li><a href="#business">핵심 사업</a></li><li><a href="#history">연혁</a></li><li><a href="#notice">알림마당</a></li></ul></div>
+    <div class="fc"><h5>파트너</h5><ul><li><a href="https://purplnetlanding.vercel.app/" target="_blank" style="color:#c4b5fd;">🟣 퍼플넷 바로가기</a></li><li><a href="#purplenet">연계 안내</a></li></ul></div>
+    <div class="fc"><h5>연락처</h5><ul><li><a href="tel:02-582-1009">02-582-1009</a></li><li><a href="mailto:kapae1503@gmail.com">kapae1503@gmail.com</a></li><li><a href="http://kapae.or.kr" target="_blank">kapae.or.kr</a></li><li><a href="https://www.youtube.com/channel/UClZsiie0UHyhBgsmyaoA_0w" target="_blank">YouTube</a></li></ul></div>
+  </div>
+  <div class="footer-bot">
+    <p>© 2015–2026 (사)한국중장년고용협회 KAPAE. All rights reserved. · Partnership: 주식회사 퍼플넷</p>
+    <div class="footer-links"><a href="#">개인정보처리방침</a><a href="#">이용약관</a><a href="https://facebook.com/kapae2015" target="_blank">Facebook</a></div>
+  </div>
+</footer>
+
+<!-- CHATBOT FAB -->
+<button class="cfab" onclick="toggleChat()"><div class="rng"></div>💬</button>
+<div class="cwin" id="cwin">
+  <div class="cwh">
+    <div class="cwav">🤖</div>
+    <div><div class="cwn">KAPAE 상담봇</div><div class="cwst">온라인 · AI 자동응답</div></div>
+    <button class="cwx" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cwmsgs" id="cwm"></div>
+  <div class="cwqs">
+    <button class="cqb" onclick="askQ('협회 소개')">협회 소개</button>
+    <button class="cqb" onclick="askQ('퍼플넷')">퍼플넷</button>
+    <button class="cqb" onclick="askQ('워크그래피')">워크그래피</button>
+    <button class="cqb" onclick="askQ('매칭')">매칭·코칭</button>
+    <button class="cqb" onclick="askQ('연락')">연락처</button>
+  </div>
+  <div class="cwi-row">
+    <input class="cwi" id="cwi" placeholder="메시지를 입력하세요…" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="cwsnd" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN PANEL  (Ctrl+Shift+A)
+══════════════════════════════════ -->
+<div id="adminRoot" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(3,8,14,.96);backdrop-filter:blur(12px);flex-direction:column;overflow:hidden;">
+
+  <!-- 로그인 화면 -->
+  <div id="adLogin" style="display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:16px;">
+    <div style="width:340px;background:#0D1B2A;border:1px solid rgba(184,151,106,.25);padding:40px 36px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#B8976A;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px;">KAPAE Admin</div>
+      <div style="font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:28px;">관리자 로그인</div>
+      <div style="margin-bottom:14px;">
+        <label style="display:block;font-size:10px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;">아이디</label>
+        <input id="adId" type="text" placeholder="admin id" style="width:100%;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:#fff;font-size:13px;outline:none;" onkeydown="if(event.key==='Enter')adLogin()">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label style="display:block;font-size:10px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;">비밀번호</label>
+        <input id="adPw" type="password" placeholder="password" style="width:100%;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:#fff;font-size:13px;outline:none;" onkeydown="if(event.key==='Enter')adLogin()">
+      </div>
+      <div id="adLoginErr" style="display:none;padding:8px 12px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#fca5a5;font-size:12px;margin-bottom:14px;">아이디 또는 비밀번호가 올바르지 않습니다.</div>
+      <button onclick="adLogin()" style="width:100%;padding:12px;background:#B8976A;color:#0D1B2A;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">로그인</button>
+    </div>
+    <button onclick="adClose()" style="background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.35);font-size:12px;padding:8px 20px;cursor:pointer;">닫기 (ESC)</button>
+  </div>
+
+  <!-- 관리자 앱 -->
+  <div id="adApp" style="display:none;flex-direction:column;height:100%;overflow:hidden;">
+
+    <!-- 탑바 -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;background:#060D14;border-bottom:1px solid rgba(184,151,106,.1);flex-shrink:0;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#B8976A;letter-spacing:.2em;text-transform:uppercase;">KAPAE Admin</span>
+        <span style="color:rgba(255,255,255,.12);">|</span>
+        <span id="adTopTitle" style="font-size:13px;font-weight:600;color:#fff;">대시보드</span>
+        <span id="adTopPath" style="font-size:11px;color:rgba(255,255,255,.28);">KAPAE Admin · 전체 현황</span>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button onclick="adLogout()" style="background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:11px;padding:5px 14px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">로그아웃</button>
+        <button onclick="adClose()" style="background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:11px;padding:5px 14px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">✕ 닫기</button>
+      </div>
+    </div>
+
+    <!-- 바디 -->
+    <div style="display:flex;flex:1;overflow:hidden;">
+
+      <!-- 사이드바 -->
+      <div style="width:200px;background:#09131E;border-right:1px solid rgba(184,151,106,.08);display:flex;flex-direction:column;flex-shrink:0;padding:16px 0;">
+        <button class="ad-sb-btn on" onclick="adGoPage('dash')" style="display:flex;align-items:center;gap:10px;padding:12px 20px;background:none;border:none;border-left:2px solid transparent;color:rgba(255,255,255,.45);font-size:12.5px;cursor:pointer;text-align:left;font-family:'Noto Sans KR',sans-serif;">
+          📊 대시보드
+        </button>
+        <button class="ad-sb-btn" onclick="adGoPage('notice')" style="display:flex;align-items:center;gap:10px;padding:12px 20px;background:none;border:none;border-left:2px solid transparent;color:rgba(255,255,255,.45);font-size:12.5px;cursor:pointer;text-align:left;font-family:'Noto Sans KR',sans-serif;">
+          📌 공지사항
+          <span id="adCntNotice" style="font-size:10px;padding:1px 6px;background:rgba(184,151,106,.2);color:#B8976A;margin-left:auto;border-radius:3px;"></span>
+        </button>
+        <button class="ad-sb-btn" onclick="adGoPage('news')" style="display:flex;align-items:center;gap:10px;padding:12px 20px;background:none;border:none;border-left:2px solid transparent;color:rgba(255,255,255,.45);font-size:12.5px;cursor:pointer;text-align:left;font-family:'Noto Sans KR',sans-serif;">
+          📰 협회소식
+          <span id="adCntNews" style="font-size:10px;padding:1px 6px;background:rgba(184,151,106,.2);color:#B8976A;margin-left:auto;border-radius:3px;"></span>
+        </button>
+        <button class="ad-sb-btn" onclick="adGoPage('inq')" style="display:flex;align-items:center;gap:10px;padding:12px 20px;background:none;border:none;border-left:2px solid transparent;color:rgba(255,255,255,.45);font-size:12.5px;cursor:pointer;text-align:left;font-family:'Noto Sans KR',sans-serif;">
+          💬 문의 목록
+          <span id="adCntInq" style="font-size:10px;padding:1px 6px;background:rgba(124,58,237,.2);color:#c4b5fd;margin-left:auto;border-radius:3px;"></span>
+        </button>
+      </div>
+
+      <!-- 메인 콘텐츠 -->
+      <div style="flex:1;overflow-y:auto;padding:28px 32px;background:#0A1520;">
+
+        <!-- 대시보드 페이지 -->
+        <div id="adPage-dash" class="ad-page on">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;">
+            <div style="background:#0D1B2A;border:1px solid rgba(184,151,106,.12);padding:20px 18px;">
+              <div style="font-size:10px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;">오늘 문의</div>
+              <div id="adDs-today" style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#D4B896;line-height:1;">0</div>
+            </div>
+            <div style="background:#0D1B2A;border:1px solid rgba(184,151,106,.12);padding:20px 18px;">
+              <div style="font-size:10px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;">공지사항</div>
+              <div id="adDs-notice" style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#D4B896;line-height:1;">0</div>
+            </div>
+            <div style="background:#0D1B2A;border:1px solid rgba(184,151,106,.12);padding:20px 18px;">
+              <div style="font-size:10px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;">협회소식</div>
+              <div id="adDs-news" style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#D4B896;line-height:1;">0</div>
+            </div>
+            <div style="background:#0D1B2A;border:1px solid rgba(184,151,106,.12);padding:20px 18px;">
+              <div style="font-size:10px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;">총 문의</div>
+              <div id="adDs-inq" style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#c4b5fd;line-height:1;">0</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+            <div style="background:#0D1B2A;border:1px solid rgba(184,151,106,.1);padding:20px;">
+              <div style="font-size:11px;font-weight:700;color:#B8976A;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;">최근 게시물</div>
+              <div id="adDashNotice"></div>
+              <button onclick="adGoPage('notice')" style="margin-top:12px;background:none;border:1px solid rgba(184,151,106,.2);color:#B8976A;font-size:11px;padding:6px 14px;cursor:pointer;width:100%;font-family:'Noto Sans KR',sans-serif;">공지 관리 →</button>
+            </div>
+            <div style="background:#0D1B2A;border:1px solid rgba(124,58,237,.12);padding:20px;">
+              <div style="font-size:11px;font-weight:700;color:#c4b5fd;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;">최근 문의</div>
+              <div id="adDashInq"></div>
+              <button onclick="adGoPage('inq')" style="margin-top:12px;background:none;border:1px solid rgba(124,58,237,.2);color:#c4b5fd;font-size:11px;padding:6px 14px;cursor:pointer;width:100%;font-family:'Noto Sans KR',sans-serif;">문의 관리 →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 공지사항 관리 페이지 -->
+        <div id="adPage-notice" class="ad-page">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input id="adNoticeQ" type="text" placeholder="제목 검색…" oninput="adFilterNotice()" style="padding:8px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:12px;width:200px;outline:none;">
+              <select id="adNoticeF" onchange="adFilterNotice()" style="padding:8px 12px;background:#0D1B2A;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:12px;outline:none;">
+                <option value="">전체 카테고리</option>
+                <option value="공지사항">공지사항</option>
+                <option value="협회소식">협회소식</option>
+              </select>
+            </div>
+            <button onclick="adOpenWrite('공지사항')" style="padding:9px 18px;background:#B8976A;color:#0D1B2A;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">+ 새 공지 작성</button>
+          </div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;">
+              <thead>
+                <tr style="background:#060D14;">
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">#</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);">제목</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">카테고리</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">뱃지</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">상태</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">날짜</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">작성자</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">관리</th>
+                </tr>
+              </thead>
+              <tbody id="adNoticeTbody" style="color:rgba(255,255,255,.65);"></tbody>
+            </table>
+          </div>
+          <div id="adNoticePg" style="display:flex;align-items:center;gap:6px;margin-top:16px;font-size:11px;color:rgba(255,255,255,.35);"></div>
+        </div>
+
+        <!-- 협회소식 관리 페이지 -->
+        <div id="adPage-news" class="ad-page">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+            <input id="adNewsQ" type="text" placeholder="제목 검색…" oninput="adFilterNews()" style="padding:8px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:12px;width:200px;outline:none;">
+            <button onclick="adOpenWrite('협회소식')" style="padding:9px 18px;background:#B8976A;color:#0D1B2A;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">+ 새 소식 작성</button>
+          </div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;">
+              <thead>
+                <tr style="background:#060D14;">
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);">#</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);">제목</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">뱃지</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">상태</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">날짜</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">작성자</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">관리</th>
+                </tr>
+              </thead>
+              <tbody id="adNewsTbody" style="color:rgba(255,255,255,.65);"></tbody>
+            </table>
+          </div>
+          <div id="adNewsPg" style="display:flex;align-items:center;gap:6px;margin-top:16px;font-size:11px;color:rgba(255,255,255,.35);"></div>
+        </div>
+
+        <!-- 문의 목록 페이지 -->
+        <div id="adPage-inq" class="ad-page">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+            <input id="adInqQ" type="text" placeholder="이름·내용 검색…" oninput="adFilterInq()" style="padding:8px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:12px;width:200px;outline:none;">
+            <select id="adInqF" onchange="adFilterInq()" style="padding:8px 12px;background:#0D1B2A;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:12px;outline:none;">
+              <option value="">전체 유형</option>
+              <option>퍼플넷 / 워크그래피</option>
+              <option>고용정보 수집 · 등록</option>
+              <option>AI 매칭 · 진로코칭</option>
+              <option>교육훈련 프로그램</option>
+              <option>자격증 · 친화기업 인증</option>
+              <option>재취업 · 인력매칭</option>
+              <option>기업 컨설팅</option>
+              <option>기타 문의</option>
+            </select>
+          </div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;">
+              <thead>
+                <tr style="background:#060D14;">
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);">#</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">접수일</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">성명</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">연락처</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">유형</th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);">내용 <span style="opacity:.5;font-weight:400;">(클릭 확장)</span></th>
+                  <th style="padding:10px 12px;text-align:left;font-weight:500;color:rgba(255,255,255,.4);white-space:nowrap;">관리</th>
+                </tr>
+              </thead>
+              <tbody id="adInqTbody" style="color:rgba(255,255,255,.65);"></tbody>
+            </table>
+          </div>
+          <div id="adInqPg" style="display:flex;align-items:center;gap:6px;margin-top:16px;font-size:11px;color:rgba(255,255,255,.35);"></div>
+        </div>
+
+      </div><!-- /메인 콘텐츠 -->
+    </div><!-- /바디 -->
+  </div><!-- /adApp -->
+
+  <!-- ── 게시물 작성/수정 모달 ── -->
+  <div id="adWriteModal" style="display:none;position:absolute;inset:0;z-index:100;background:rgba(3,8,14,.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;">
+    <div style="width:min(820px,100%);max-height:92vh;background:#0D1B2A;border:1px solid rgba(184,151,106,.25);display:flex;flex-direction:column;overflow:hidden;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(184,151,106,.12);flex-shrink:0;">
+        <span id="adWriteTitle" style="font-family:'Noto Serif KR',serif;font-size:15px;font-weight:600;color:#fff;">공지 작성</span>
+        <button onclick="closeAdModal('adWriteModal')" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:16px;cursor:pointer;">✕</button>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px;">
+        <input type="hidden" id="adEditId">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <label style="display:block;font-size:9.5px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;">카테고리</label>
+            <select id="adWCat" style="width:100%;padding:9px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:#fff;font-size:12.5px;outline:none;">
+              <option value="공지사항">공지사항</option>
+              <option value="협회소식">협회소식</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:9.5px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;">게시일</label>
+            <input type="date" id="adWPublished" style="width:100%;padding:9px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:#fff;font-size:12.5px;outline:none;">
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:9.5px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;">제목 *</label>
+          <input type="text" id="adWTitle" placeholder="게시물 제목을 입력하세요" style="width:100%;padding:9px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:#fff;font-size:13px;outline:none;">
+        </div>
+        <div>
+          <label style="display:block;font-size:9.5px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px;">작성자</label>
+          <input type="text" id="adWAuthor" placeholder="작성자명" style="width:100%;padding:9px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:#fff;font-size:13px;outline:none;">
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;">
+            <label style="font-size:9.5px;color:#B8976A;letter-spacing:.14em;text-transform:uppercase;">본문 (HTML 가능)</label>
+            <div style="display:flex;gap:5px;">
+              <button onclick="adInsHtml('&lt;p&gt;&lt;/p&gt;')" style="font-size:10px;padding:3px 8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;">&lt;p&gt;</button>
+              <button onclick="adInsHtml('&lt;strong&gt;&lt;/strong&gt;')" style="font-size:10px;padding:3px 8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;">&lt;b&gt;</button>
+              <button onclick="adInsHtml('&lt;div class=&quot;nc-section&quot;&gt;&lt;h4&gt;■ &lt;/h4&gt;&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;')" style="font-size:10px;padding:3px 8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;">섹션</button>
+              <button onclick="adInsHtml('&lt;div class=&quot;nc-note&quot;&gt;&lt;/div&gt;')" style="font-size:10px;padding:3px 8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);cursor:pointer;">노트</button>
+              <button onclick="adTogglePreview()" style="font-size:10px;padding:3px 8px;background:rgba(184,151,106,.1);border:1px solid rgba(184,151,106,.2);color:#B8976A;cursor:pointer;">미리보기</button>
+            </div>
+          </div>
+          <textarea id="adWContent" rows="10" placeholder="본문 내용을 HTML로 입력하세요…" oninput="adUpdatePrev()" style="width:100%;padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(184,151,106,.2);color:rgba(255,255,255,.8);font-size:12.5px;outline:none;resize:vertical;font-family:'Noto Sans KR',sans-serif;line-height:1.7;"></textarea>
+          <div id="adPrevBox" style="margin-top:10px;padding:16px;background:#060D14;border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.7);font-size:13px;line-height:1.9;display:none;"></div>
+        </div>
+        <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.5);">
+            <input type="checkbox" id="adWNew" style="accent-color:#B8976A;"> NEW 뱃지
+          </label>
+          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.5);">
+            <input type="checkbox" id="adWHot" style="accent-color:#B8976A;"> HOT 뱃지
+          </label>
+          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.5);">
+            <input type="checkbox" id="adWActive" checked style="accent-color:#B8976A;"> 게시 (공개)
+          </label>
+        </div>
+      </div>
+      <div style="padding:14px 22px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0;background:rgba(0,0,0,.2);">
+        <button onclick="closeAdModal('adWriteModal')" style="padding:9px 20px;background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">취소</button>
+        <button id="adWriteBtn" onclick="adSubmitWrite()" style="padding:9px 24px;background:#B8976A;color:#0D1B2A;font-size:12.5px;font-weight:700;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">
+          <span id="adWriteBtnTxt">등록하기</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 게시물 상세보기 모달 ── -->
+  <div id="adDetailModal" style="display:none;position:absolute;inset:0;z-index:100;background:rgba(3,8,14,.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px;">
+    <div style="width:min(680px,100%);max-height:88vh;background:#0D1B2A;border:1px solid rgba(184,151,106,.2);display:flex;flex-direction:column;overflow:hidden;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(184,151,106,.1);flex-shrink:0;">
+        <div>
+          <div id="adDetailMeta" style="font-size:10.5px;color:rgba(255,255,255,.3);margin-bottom:6px;font-family:'Cormorant Garamond',serif;letter-spacing:.04em;"></div>
+          <div id="adDetailBadges" style="display:flex;gap:6px;margin-bottom:8px;min-height:16px;"></div>
+          <div id="adDetailTitle" style="font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;color:#fff;line-height:1.4;"></div>
+          <div id="adDetailAuthor" style="font-size:12px;color:rgba(255,255,255,.28);margin-top:5px;"></div>
+        </div>
+        <button onclick="closeAdModal('adDetailModal')" style="background:none;border:none;color:rgba(255,255,255,.4);font-size:18px;cursor:pointer;flex-shrink:0;margin-left:16px;">✕</button>
+      </div>
+      <div id="adDetailContent" style="flex:1;overflow-y:auto;padding:24px;font-size:13.5px;line-height:2;color:rgba(255,255,255,.7);"></div>
+    </div>
+  </div>
+
+  <!-- ── 삭제 확인 모달 ── -->
+  <div id="adConfirmDel" style="display:none;position:absolute;inset:0;z-index:200;background:rgba(3,8,14,.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+    <div style="width:360px;background:#0D1B2A;border:1px solid rgba(239,68,68,.3);padding:32px 28px;text-align:center;">
+      <div style="font-size:28px;margin-bottom:14px;">🗑</div>
+      <div id="adConfirmMsg" style="font-size:13.5px;color:rgba(255,255,255,.65);margin-bottom:24px;line-height:1.7;"></div>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <button onclick="closeConfirmDel()" style="padding:9px 22px;background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">취소</button>
+        <button id="adConfirmOk" style="padding:9px 22px;background:rgba(239,68,68,.8);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">삭제 확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 토스트 알림 ── -->
+  <div id="adToast" style="position:fixed;bottom:28px;left:50%;transform:translateX(-50%);padding:10px 22px;background:#0D1B2A;border:1px solid rgba(184,151,106,.3);color:#D4B896;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:300;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;"></div>
+
+</div><!-- /adminRoot -->
+
+<style>
+/* ── 관리자 공통 스타일 ── */
+.ad-page { display: none; }
+.ad-page.on { display: block; }
+.ad-sb-btn { transition: background .15s, color .15s, border-color .15s; }
+.ad-sb-btn.on { background: rgba(184,151,106,.08) !important; color: #D4B896 !important; border-left-color: #B8976A !important; }
+#adApp.on { display: flex !important; }
+#adLogin.hide { display: none !important; }
+#adLoginErr.show { display: block !important; }
+#adWriteModal.on, #adDetailModal.on, #adConfirmDel.on { display: flex !important; }
+#adToast.show { opacity: 1 !important; }
+.ad-dc-row { display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.04);font-size:11.5px; }
+.ad-dc-row-t { color:rgba(255,255,255,.55);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1; }
+.ad-dc-row-d { color:rgba(255,255,255,.2);font-size:10.5px;flex-shrink:0;margin-left:10px; }
+.ad-empty { padding:24px;text-align:center;color:rgba(255,255,255,.2);font-size:12.5px; }
+.adbadge { font-size:9.5px;font-weight:700;padding:2px 7px;letter-spacing:.3px;text-transform:uppercase; }
+.adbadge-notice { background:rgba(36,86,164,.2);color:#93c5fd; }
+.adbadge-new { background:rgba(13,27,42,.8);color:#B8976A;border:1px solid rgba(184,151,106,.25); }
+.adbadge-hot { background:rgba(184,151,106,.15);color:#D4B896; }
+.adbtn { font-size:11px;padding:4px 10px;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:.15s; }
+.adbtn-sm { font-size:10.5px;padding:3px 9px; }
+.adbtn-out { background:none;border:1px solid rgba(184,151,106,.25);color:#B8976A; }
+.adbtn-out:hover { background:rgba(184,151,106,.1); }
+.adbtn-del { background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171; }
+.adbtn-del:hover { background:rgba(239,68,68,.2); }
+#adminRoot table tr { border-bottom:1px solid rgba(255,255,255,.04); }
+#adminRoot table tr:hover td { background:rgba(255,255,255,.02); }
+#adminRoot table td, #adminRoot table th { padding:10px 12px;vertical-align:middle; }
+.adtd-title { max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+.adtd-act { white-space:nowrap; }
+.adtd-act { display:flex;gap:5px;align-items:center; }
+.inq-expand { display:none; }
+.inq-expand.on { display:table-row; }
+.ad-pg-btns { display:inline-flex;gap:3px;margin-left:8px; }
+.ad-pg-btn { padding:3px 8px;background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:11px;cursor:pointer;font-family:'Noto Sans KR',sans-serif; }
+.ad-pg-btn.on { border-color:#B8976A;color:#D4B896; }
+.ad-pg-btn:disabled { opacity:.3;cursor:not-allowed; }
+</style>
+
+<script src="app.js"></script>
+</body>
+</html>

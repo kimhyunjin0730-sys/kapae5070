@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone:*)",
+      "Bash(curl -s \"https://api.github.com/repos/garrytan/gstack\")"
+    ]
+  }
+}
