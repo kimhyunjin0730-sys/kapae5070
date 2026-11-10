@@ -1,1 +1,1 @@
-mysql -u root -pHI829^cata700 -e "SHOW DATABASES;"
+mysql -u root -p -e "SHOW DATABASES;"

@@ -1919,14 +1919,53 @@ const JourneySection = (() => {
    ★ 관리자 패널  (Ctrl+Shift+A)
    v2: HTML 체크박스 ID와 완전 동기화
 ═══════════════════════════════════ */
-const AD_ID = 'admin.kapae';
-const AD_PW = 'kapae505';
+// 관리자 계정은 서버(.env의 ADMIN_ID / ADMIN_PASSWORD)에서만 확인합니다.
+// 로그인에 성공하면 서버가 발급한 토큰을 sessionStorage에 두고 관리 API 호출에 씁니다.
+const AD_TOKEN_KEY = 'kapae_adm_token';
+
+function adGetToken() {
+  try { return sessionStorage.getItem(AD_TOKEN_KEY) || ''; } catch { return ''; }
+}
+function adSetToken(token) {
+  try {
+    if (token) sessionStorage.setItem(AD_TOKEN_KEY, token);
+    else sessionStorage.removeItem(AD_TOKEN_KEY);
+  } catch { /* 저장소 차단 시 무시 */ }
+}
+// 만료 시각(exp)만 미리 확인 — 실제 검증은 서버가 합니다.
+function adHasValidToken() {
+  const token = adGetToken();
+  if (!token) return false;
+  try {
+    const b64 = token.split('.')[0].replace(/-/g, '+').replace(/_/g, '/');
+    const { exp } = JSON.parse(atob(b64));
+    return typeof exp === 'number' && Date.now() < exp;
+  } catch { return false; }
+}
 
 // ── 자체 백엔드(server.js / MariaDB) API 헬퍼 ──────────────────────────────
 // Supabase 제거 → 동일 서버의 /api/* 엔드포인트로 직접 연결합니다.
 
+async function _adFetch(method, url, data) {
+  const headers = {};
+  const token = adGetToken();
+  if (token) headers.Authorization = `Bearer ${token}`;
+  if (data !== undefined) headers['Content-Type'] = 'application/json';
+  const r = await fetch(url, { method, headers, body: data !== undefined ? JSON.stringify(data) : undefined });
+  if (r.status === 401) {
+    adLogout();
+    throw new Error('로그인이 만료되었습니다. 다시 로그인해주세요.');
+  }
+  if (!r.ok) {
+    let msg = '';
+    try { msg = (await r.json()).error || ''; } catch { /* JSON 아님 */ }
+    throw new Error(`${method} ${r.status}${msg ? ': ' + msg : ''}`);
+  }
+  return r.json();
+}
+
 async function _get(table, _qs = '') {
-  // notice_board: ?all=1 → is_active 필터 없이 전체 반환 (관리자용)
+  // notice_board: ?all=1 → is_active 필터 없이 전체 반환 (관리자 토큰 필요)
   // inquiries   : /api/inquiries (GET)
   let url;
   if (table === 'notice_board') {
@@ -1936,79 +1975,59 @@ async function _get(table, _qs = '') {
   } else {
     throw new Error('_get: 알 수 없는 테이블 ' + table);
   }
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`GET ${r.status}`);
-  return r.json();
+  return _adFetch('GET', url);
 }
 
 async function _post(table, data) {
   // notice_board: POST /api/notices
-  let url;
-  if (table === 'notice_board') {
-    url = '/api/notices';
-  } else {
-    throw new Error('_post: 알 수 없는 테이블 ' + table);
-  }
-  const r = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  if (!r.ok) throw new Error(`POST ${r.status}: ${await r.text()}`);
-  return r.json();
+  if (table !== 'notice_board') throw new Error('_post: 알 수 없는 테이블 ' + table);
+  return _adFetch('POST', '/api/notices', data);
 }
 
 async function _patch(table, id, data) {
   // notice_board: PATCH /api/notices/:id
-  let url;
-  if (table === 'notice_board') {
-    url = `/api/notices/${id}`;
-  } else {
-    throw new Error('_patch: 알 수 없는 테이블 ' + table);
-  }
-  const r = await fetch(url, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  if (!r.ok) throw new Error(`PATCH ${r.status}: ${await r.text()}`);
-  return r.json();
+  if (table !== 'notice_board') throw new Error('_patch: 알 수 없는 테이블 ' + table);
+  return _adFetch('PATCH', `/api/notices/${encodeURIComponent(id)}`, data);
 }
 
 async function _del(table, id) {
   // notice_board: DELETE /api/notices/:id
-  let url;
-  if (table === 'notice_board') {
-    url = `/api/notices/${id}`;
-  } else {
-    throw new Error('_del: 알 수 없는 테이블 ' + table);
-  }
-  const r = await fetch(url, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  if (!r.ok) throw new Error(`DELETE ${r.status}`);
+  if (table !== 'notice_board') throw new Error('_del: 알 수 없는 테이블 ' + table);
+  await _adFetch('DELETE', `/api/notices/${encodeURIComponent(id)}`);
   return true;
 }
 
 /* ── 로그인/로그아웃 ── */
-function adLogin() {
+async function adLogin() {
   const id = document.getElementById('adId').value.trim();
   const pw = document.getElementById('adPw').value;
-  if (id === AD_ID && pw === AD_PW) {
-    sessionStorage.setItem('kapae_adm', '1');
-    document.getElementById('adLogin').classList.add('hide');
-    document.getElementById('adApp').classList.add('on');
-    adInit();
-  } else {
-    const e = document.getElementById('adLoginErr');
-    e.style.display = 'block';
-    document.getElementById('adPw').value = '';
-    setTimeout(() => { e.style.display = 'none'; }, 2600);
+  const errEl = document.getElementById('adLoginErr');
+  let errMsg = '';
+  try {
+    const r = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, password: pw }),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (r.ok && body.token) {
+      adSetToken(body.token);
+      document.getElementById('adLogin').classList.add('hide');
+      document.getElementById('adApp').classList.add('on');
+      adInit();
+      return;
+    }
+    errMsg = body.error || '';
+  } catch {
+    errMsg = '서버에 연결할 수 없습니다.';
   }
+  errEl.textContent = errMsg || '아이디 또는 비밀번호가 올바르지 않습니다.';
+  errEl.style.display = 'block';
+  document.getElementById('adPw').value = '';
+  setTimeout(() => { errEl.style.display = 'none'; }, 2600);
 }
 function adLogout() {
-  sessionStorage.removeItem('kapae_adm');
+  adSetToken('');
   document.getElementById('adApp').classList.remove('on');
   document.getElementById('adLogin').classList.remove('hide');
   document.getElementById('adId').value = '';
@@ -2422,7 +2441,7 @@ function adToast(msg, type = 'ok') {
 const _adRoot = document.getElementById('adminRoot');
 if (_adRoot) {
   new MutationObserver(() => {
-    if (_adRoot.classList.contains('on') && sessionStorage.getItem('kapae_adm') === '1') {
+    if (_adRoot.classList.contains('on') && adHasValidToken()) {
       const loginEl = document.getElementById('adLogin');
       const appEl = document.getElementById('adApp');
       if (loginEl) loginEl.classList.add('hide');
