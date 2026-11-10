@@ -32,10 +32,18 @@ app.use(express.json());
 
 // --- 🔒 정적 파일: 공개해도 되는 파일만 화이트리스트로 서빙 ---
 // (예전처럼 express.static(__dirname)을 쓰면 .env, database.js 등 서버 파일까지 노출됨)
-const PUBLIC_FILES = ['index.html', 'notice.html', 'app.js'];
-for (const file of PUBLIC_FILES) {
+const PUBLIC_PAGES = [
+  'index.html', 'about.html', 'organization.html', 'history.html',
+  'business.html', 'business-detail.html', 'purplenet.html',
+  'notice.html', 'notice-view.html', 'contact.html', 'contact-done.html',
+  'sitemap.html', 'policy.html', 'admin.html',
+];
+for (const file of PUBLIC_PAGES) {
   app.get(`/${file}`, (req, res) => res.sendFile(path.join(__dirname, file)));
 }
+// 디자인 자원(CSS·JS·이미지)은 assets 폴더 안의 것만 공개
+app.use('/assets', express.static(path.join(__dirname, 'assets'), { index: false, dotfiles: 'ignore', maxAge: '1h' }));
+app.use('/assets', (req, res) => res.status(404).end());
 
 // --- 🔒 공통 유틸 ---
 function rateLimit({ windowMs, max, message }) {
@@ -325,8 +333,11 @@ function pickNoticeFields(body) {
 app.get('/api/notices', async (req, res) => {
   try {
     const { category, all } = req.query;
-    // ?all=1 은 관리자 토큰이 있을 때만 비활성 글까지 반환
-    const includeInactive = all === '1' && hasAdminToken(req);
+    // ?all=1 은 관리자 전용(비활성 글 포함): 토큰이 없거나 만료되면 401로 알려 관리자 화면이 다시 로그인하게 함
+    if (all === '1' && !hasAdminToken(req)) {
+      return res.status(401).json({ error: '관리자 로그인이 필요합니다.' });
+    }
+    const includeInactive = all === '1';
     let query = includeInactive ? 'SELECT * FROM notice_board WHERE 1 = 1' : 'SELECT * FROM notice_board WHERE is_active = 1';
     const params = [];
 

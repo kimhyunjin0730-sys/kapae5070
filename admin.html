@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>관리자 | (사)한국중장년고용협회</title>
+<meta name="description" content="(사)한국중장년고용협회 알림마당 게시글을 관리하는 화면입니다.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B2545">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/board.css">
+</head>
+<body data-no-promo>
+<a class="skip" href="#main">본문 바로가기</a>
+<div id="site-header" data-current=""></div>
+<script src="/assets/js/site.js"></script>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container page-head__in">
+      <nav class="breadcrumb" aria-label="현재 위치">
+        <ol>
+          <li><a href="index.html"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"></path><path d="M6 10v10h12V10"></path></svg>홈</a></li>
+          <li class="sep" aria-hidden="true">›</li>
+          <li><span aria-current="page">관리자</span></li>
+        </ol>
+      </nav>
+      <h1 class="page-title">관리자</h1>
+    </div>
+  </div>
+
+  <div class="container adm">
+    <!-- 로그인 -->
+    <section class="adm-login" id="adm-login" aria-labelledby="adm-login-title">
+      <h2 class="h2 h2--sm" id="adm-login-title">관리자 로그인</h2>
+      <p class="adm-login__desc">알림마당 게시글을 관리하려면 관리자 계정으로 로그인해 주세요.</p>
+      <div class="adm-msg" id="adm-login-msg" role="alert"></div>
+      <form class="form adm-login__form" id="adm-login-form" novalidate>
+        <div class="field">
+          <label for="adm-id">아이디</label>
+          <input class="input" id="adm-id" name="id" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+        </div>
+        <div class="field">
+          <label for="adm-pw">비밀번호</label>
+          <input class="input" id="adm-pw" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn--primary btn--lg adm-login__btn" id="adm-login-btn">로그인</button>
+      </form>
+    </section>
+
+    <!-- 게시글 관리 -->
+    <section class="adm-app" id="adm-app" aria-labelledby="adm-app-title" hidden>
+      <div class="adm-bar">
+        <h2 class="h2 h2--sm" id="adm-app-title" tabindex="-1">게시글 관리</h2>
+        <div class="adm-bar__actions">
+          <button type="button" class="btn btn--primary btn--sm" id="adm-new">새 글 쓰기</button>
+          <button type="button" class="btn btn--line btn--sm" id="adm-logout">로그아웃</button>
+        </div>
+      </div>
+      <p class="adm-note">상담 신청(문의) 내역은 이 화면에 나오지 않습니다. 접수 알림 메일과 데이터베이스에서 확인해 주세요.</p>
+      <div class="adm-msg" id="adm-msg" role="status"></div>
+
+      <div class="adm-list" id="adm-list">
+        <div class="tabs" role="group" aria-label="게시판 선택">
+          <button type="button" class="tab" data-adm-tab="notice" aria-pressed="true">공지사항 <span class="adm-count" data-count="notice"></span></button>
+          <button type="button" class="tab" data-adm-tab="news" aria-pressed="false">협회소식 <span class="adm-count" data-count="news"></span></button>
+        </div>
+        <div class="table-wrap adm-table-wrap">
+          <table class="table adm-table">
+            <caption id="adm-caption">공지사항 게시글 목록</caption>
+            <thead>
+              <tr>
+                <th scope="col">제목</th>
+                <th scope="col">분류</th>
+                <th scope="col">게시일</th>
+                <th scope="col">공개</th>
+                <th scope="col">NEW</th>
+                <th scope="col">HOT</th>
+                <th scope="col">관리</th>
+              </tr>
+            </thead>
+            <tbody id="adm-rows"></tbody>
+          </table>
+        </div>
+        <p class="adm-empty" id="adm-empty" hidden></p>
+      </div>
+
+      <section class="adm-editor" id="adm-editor" aria-labelledby="adm-editor-title" hidden>
+        <h3 class="h3" id="adm-editor-title" tabindex="-1">새 글 쓰기</h3>
+        <form class="form adm-form" id="adm-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="adm-cat">분류</label>
+              <select class="select" id="adm-cat" name="category">
+                <option value="공지사항">공지사항</option>
+                <option value="협회소식">협회소식</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="adm-date">게시일</label>
+              <input class="input" id="adm-date" name="published_at" type="date" aria-describedby="adm-date-help">
+              <p class="adm-help" id="adm-date-help">비워 두면 오늘 날짜로 저장됩니다.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="adm-title">제목 <span class="req">(필수)</span></label>
+            <input class="input" id="adm-title" name="title" type="text" maxlength="255" required aria-describedby="adm-title-err">
+            <p class="field-error" id="adm-title-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="adm-author">작성 부서</label>
+            <input class="input" id="adm-author" name="author" type="text" maxlength="50" aria-describedby="adm-author-help">
+            <p class="adm-help" id="adm-author-help">목록의 ‘작성 부서’ 칸에 보입니다. 비워 두면 ‘운영자’로 표시됩니다.</p>
+          </div>
+          <fieldset class="adm-flags">
+            <legend>게시 설정</legend>
+            <label class="check"><input type="checkbox" id="adm-active" name="is_active" checked>공개 (알림마당에 보이기)</label>
+            <label class="check"><input type="checkbox" id="adm-isnew" name="is_new">NEW 표시</label>
+            <label class="check"><input type="checkbox" id="adm-ishot" name="is_hot">HOT 표시</label>
+          </fieldset>
+          <div class="field">
+            <label for="adm-content">본문 (HTML) <span class="req">(필수)</span></label>
+            <p class="adm-help" id="adm-content-help">HTML을 그대로 입력합니다. 아래 버튼으로 문단, 소제목과 목록, 안내 상자 형식을 넣을 수 있고, 입력한 내용은 미리보기에 바로 보입니다.</p>
+            <div class="adm-snippets" role="group" aria-label="본문 형식 넣기">
+              <button type="button" class="btn btn--line btn--sm" data-snippet="p">문단</button>
+              <button type="button" class="btn btn--line btn--sm" data-snippet="section">소제목과 목록</button>
+              <button type="button" class="btn btn--line btn--sm" data-snippet="note">안내 상자</button>
+            </div>
+            <textarea class="textarea adm-content" id="adm-content" name="content" rows="14" spellcheck="false" required aria-describedby="adm-content-help adm-content-err"></textarea>
+            <p class="field-error" id="adm-content-err" hidden></p>
+          </div>
+          <div class="adm-preview" role="region" aria-labelledby="adm-preview-label">
+            <p class="adm-preview__label" id="adm-preview-label">미리보기 (게시글 보기 화면의 본문 모양)</p>
+            <div class="post-body" id="adm-preview"></div>
+          </div>
+          <div class="adm-form__foot">
+            <div class="adm-msg" id="adm-form-msg" role="alert"></div>
+            <div class="adm-form__actions">
+              <button type="submit" class="btn btn--primary btn--lg" id="adm-save">등록하기</button>
+              <button type="button" class="btn btn--line btn--lg" id="adm-cancel">취소</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/board.js"></script>
+<script src="/assets/js/admin.js"></script>
+</body>
+</html>
