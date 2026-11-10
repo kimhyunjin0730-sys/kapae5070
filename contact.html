@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>상담 신청 | (사)한국중장년고용협회</title>
+<meta name="description" content="(사)한국중장년고용협회에 온라인으로 상담을 신청하고 전화·이메일 연락처와 오시는 길을 확인할 수 있습니다.">
+<meta name="theme-color" content="#0B2545">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/board.css">
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<div id="site-header" data-current="contact"></div>
+<script src="/assets/js/site.js"></script>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container page-head__in">
+      <nav class="breadcrumb" aria-label="현재 위치">
+        <ol>
+          <li><a href="index.html"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"></path><path d="M6 10v10h12V10"></path></svg>홈</a></li>
+          <li class="sep" aria-hidden="true">›</li>
+          <li><span aria-current="page">상담 신청</span></li>
+        </ol>
+      </nav>
+      <h1 class="page-title">상담 신청</h1>
+    </div>
+  </div>
+
+  <div class="container sub-layout">
+    <nav class="side-nav" aria-label="상담 신청 하위 메뉴">
+      <p class="side-nav__title">상담 신청</p>
+      <ul class="side-nav__list">
+        <li><a class="side-nav__link" href="contact.html" aria-current="page">상담 신청</a></li>
+        <li><a class="side-nav__link" href="#location">오시는 길</a></li>
+      </ul>
+    </nav>
+
+    <div class="sub-content contact-content">
+      <ul class="list-reset contact-cards" aria-label="연락처">
+        <li class="contact-card contact-card--dark">
+          <span class="contact-card__icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg></span>
+          <span class="contact-card__text">
+            <span class="contact-card__label">전화 상담</span>
+            <a class="contact-card__tel" href="tel:02-582-1009">02-582-1009</a>
+            <span class="contact-card__note">[상담 가능 시간 입력]</span>
+          </span>
+        </li>
+        <li class="contact-card">
+          <span class="contact-card__icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+          <span class="contact-card__text">
+            <span class="contact-card__label">이메일 문의</span>
+            <a class="contact-card__mail" href="mailto:kapae1503@gmail.com">kapae1503@gmail.com</a>
+          </span>
+        </li>
+      </ul>
+
+      <section aria-labelledby="form-title">
+        <h2 class="h2 h2--sm" id="form-title">온라인 상담 신청</h2>
+        <p class="contact-req-note"><span class="contact-req">(필수)</span> 표시가 있는 항목은 꼭 입력해 주세요.</p>
+        <form class="form contact-form" id="contact-form" aria-labelledby="form-title" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">성명 <span class="req">(필수)</span></label>
+              <input class="input" id="cf-name" name="name" type="text" autocomplete="name" maxlength="50" required aria-describedby="cf-name-err">
+              <p class="field-error" id="cf-name-err" hidden></p>
+            </div>
+            <div class="field">
+              <label for="cf-phone">연락처 <span class="req">(필수)</span></label>
+              <input class="input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required placeholder="예: 010-0000-0000" aria-describedby="cf-phone-err">
+              <p class="field-error" id="cf-phone-err" hidden></p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-email">이메일</label>
+              <input class="input" id="cf-email" name="email" type="email" autocomplete="email" maxlength="100" aria-describedby="cf-email-err">
+              <p class="field-error" id="cf-email-err" hidden></p>
+            </div>
+            <div class="field">
+              <label for="cf-type">문의 유형</label>
+              <select class="select" id="cf-type" name="type">
+                <option value="">선택해주세요</option>
+                <option>퍼플넷 · 워크그래피</option>
+                <option>고용정보 수집 · 등록</option>
+                <option>AI 매칭 · 진로코칭</option>
+                <option>교육훈련 프로그램</option>
+                <option>자격증 · 친화기업 인증</option>
+                <option>재취업 · 인력매칭</option>
+                <option>기업 컨설팅</option>
+                <option>기타 문의</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">문의 내용 <span class="req">(필수)</span></label>
+            <textarea class="textarea" id="cf-message" name="message" rows="6" maxlength="5000" required aria-describedby="cf-message-err"></textarea>
+            <p class="field-error" id="cf-message-err" hidden></p>
+          </div>
+          <div class="contact-agree">
+            <label class="check" for="cf-agree"><input type="checkbox" id="cf-agree" name="agree" required aria-describedby="cf-agree-err"><span><strong>개인정보 수집 및 이용에 동의합니다.</strong> <span class="req">(필수)</span><br><span class="contact-agree__sub">(성명, 연락처, 이메일을 문의 답변 목적으로 수집합니다.)</span></span></label>
+            <p class="field-error" id="cf-agree-err" hidden></p>
+            <a class="contact-agree__link" href="policy.html#privacy" target="_blank" rel="noopener" title="새 창 열림">개인정보처리방침 보기</a>
+          </div>
+          <div class="contact-send">
+            <div id="contact-alert" role="alert"></div>
+            <button type="submit" class="btn btn--primary contact-submit" id="contact-submit"><span data-label>상담 신청하기</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+          </div>
+        </form>
+      </section>
+
+      <section id="location" aria-labelledby="location-title">
+        <h2 class="h2 h2--sm" id="location-title">오시는 길</h2>
+        <div class="placeholder contact-map" role="img" aria-label="지도 자리: 서울 서초구 서초대로64길 55 준원빌딩 위치">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+          <span class="contact-map__text">지도 자리&nbsp;· 협회 위치 지도로 교체</span>
+        </div>
+        <div class="table-wrap contact-table">
+          <table class="table">
+            <caption>오시는 길 안내</caption>
+            <tbody>
+              <tr><th scope="row">주소</th><td>서울 서초구 서초대로64길 55 준원빌딩 505호 <span class="nowrap">(우편번호 06636)</span></td></tr>
+              <tr><th scope="row">교통편</th><td>[<span class="nowrap">지하철·버스</span> 안내 입력]</td></tr>
+              <tr><th scope="row">상담 가능 시간</th><td>[상담 가능 시간 입력]</td></tr>
+              <tr><th scope="row">전화</th><td><a class="nowrap" href="tel:02-582-1009"><strong>02-582-1009</strong></a></td></tr>
+              <tr><th scope="row">이메일</th><td><a href="mailto:kapae1503@gmail.com"><strong>kapae1503@gmail.com</strong></a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/contact.js"></script>
+</body>
+</html>

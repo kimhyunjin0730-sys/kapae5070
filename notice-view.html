@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>알림마당 | (사)한국중장년고용협회</title>
+<meta name="description" content="(사)한국중장년고용협회 알림마당의 공지사항과 협회 소식 게시글을 보여 드립니다.">
+<meta name="theme-color" content="#0B2545">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/board.css">
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<div id="site-header" data-current="notice"></div>
+<script src="/assets/js/site.js"></script>
+
+<main id="main">
+  <div class="page-head">
+    <div class="container page-head__in">
+      <nav class="breadcrumb" aria-label="현재 위치">
+        <ol>
+          <li><a href="index.html"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"></path><path d="M6 10v10h12V10"></path></svg>홈</a></li>
+          <li class="sep" aria-hidden="true">›</li>
+          <li><a href="notice.html">알림마당</a></li>
+          <li class="sep" aria-hidden="true" id="post-crumb-sep" hidden>›</li>
+          <li id="post-crumb-item" hidden><span aria-current="page" id="post-crumb">공지사항</span></li>
+        </ol>
+      </nav>
+      <p class="page-title">알림마당</p>
+    </div>
+  </div>
+
+  <div class="container sub-layout">
+    <nav class="side-nav" aria-label="알림마당 하위 메뉴">
+      <p class="side-nav__title">알림마당</p>
+      <ul class="side-nav__list">
+        <li><a class="side-nav__link" href="notice.html?tab=notice" data-side="notice">공지사항</a></li>
+        <li><a class="side-nav__link" href="notice.html?tab=news" data-side="news">협회 소식</a></li>
+        <li><a class="side-nav__link" href="https://www.youtube.com/channel/UClZsiie0UHyhBgsmyaoA_0w" target="_blank" rel="noopener" title="새 창 열림">유튜브 채널<svg class="side-nav__ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v5H5V6h5"></path></svg></a></li>
+      </ul>
+    </nav>
+
+    <div class="sub-content post-content" id="post-root">
+      <p class="post-loading" role="status">게시글을 불러오는 중입니다.</p>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/board.js"></script>
+<script src="/assets/js/notice-view.js"></script>
+</body>
+</html>
