@@ -1,0 +1,34 @@
+# systemd 서비스 — Node 서버가 죽거나 VM이 재부팅돼도 자동으로 다시 켜지게 함
+#
+# 설치 (서버에서, __로 감싼 값은 실제 값으로):
+#   sed -e "s#__DEPLOY_USER__#$(whoami)#" \
+#       -e "s#__DEPLOY_DIR__#$(pwd)#" \
+#       -e "s#__NODE_BIN__#$(command -v node)#" \
+#       deploy/kapae5070.service | sudo tee /etc/systemd/system/kapae5070.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now kapae5070
+#
+# 확인: systemctl status kapae5070  /  로그: journalctl -u kapae5070 -f
+
+[Unit]
+Description=KAPAE 5070 Node server
+After=network-online.target mariadb.service mysql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__DEPLOY_USER__
+WorkingDirectory=__DEPLOY_DIR__
+# .env는 server.js가 dotenv로 직접 읽음 (PORT, DB_*, ADMIN_* 등)
+ExecStart=__NODE_BIN__ server.js
+Environment=NODE_ENV=production
+Restart=always
+RestartSec=5
+
+# 최소한의 격리
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

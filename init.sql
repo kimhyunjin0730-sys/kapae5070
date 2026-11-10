@@ -1,7 +1,9 @@
 # 1. 터미널(또는 워크벤치)에서 아래 명령어 실행 전
 # mysql -u root -p 접속 (또는 MariaDB)
+# 실행: sudo mysql < init.sql
+# 모든 테이블이 IF NOT EXISTS라서 여러 번 실행해도 기존 데이터는 그대로 둡니다.
 
-CREATE DATABASE IF NOT EXISTS kapae5070;
+CREATE DATABASE IF NOT EXISTS kapae5070 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE kapae5070;
 
 # 2. 문의하기 테이블(inquiries) 생성
@@ -20,7 +22,7 @@ CREATE TABLE IF NOT EXISTS notice_board (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    content TEXT,
+    content MEDIUMTEXT,          -- 관리자가 쓰는 HTML 본문 (TEXT는 64KB 제한)
     author VARCHAR(50),
     published_at DATE, -- app.js 프론트엔드 정렬을 위해 published_at (또는 date) 사용
     views INT DEFAULT 0,
@@ -34,7 +36,7 @@ CREATE TABLE IF NOT EXISTS notice_board (
 CREATE TABLE IF NOT EXISTS workgraphy_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    phongit rm e VARCHAR(50),
+    phone VARCHAR(50),
     email VARCHAR(100),
     age_group VARCHAR(20),
     status VARCHAR(50),
@@ -60,5 +62,29 @@ CREATE TABLE IF NOT EXISTS jobs (
     job_type VARCHAR(50),        -- 재취업, 자문, 프로젝트 등
     is_senior_friendly BOOLEAN DEFAULT TRUE,
     raw_url TEXT,                -- 원본 공고 링크
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+# 6. 크롤러가 수집한 공고 (scrapers/*.js, /api/scraped-jobs)
+#    같은 출처의 같은 제목은 중복 저장하지 않음 (ON DUPLICATE KEY UPDATE)
+CREATE TABLE IF NOT EXISTS scraped_jobs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    source VARCHAR(50) NOT NULL,     -- MOEL, 워크넷, 노인일자리 여기 등
+    title VARCHAR(255) NOT NULL,
+    company VARCHAR(100),
+    region VARCHAR(100),
+    salary VARCHAR(100),
+    link TEXT,                       -- 원본 공고 링크
+    deadline VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_scraped_jobs_source_title (source, title)
+);
+
+# 7. 업로드된 워크그래피 PDF 텍스트와 AI 진단 리포트 (/api/workgraphy/upload, /api/assessment/:id)
+CREATE TABLE IF NOT EXISTS workgraphy_parsed (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(100),
+    raw_text LONGTEXT,
+    assessment_report LONGTEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
